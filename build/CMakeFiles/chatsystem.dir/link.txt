@@ -1,0 +1,1 @@
+/usr/lib64/ccache/c++    -rdynamic CMakeFiles/chatsystem.dir/Chat_System/main.cpp.o  -o chatsystem -lmariadb 
