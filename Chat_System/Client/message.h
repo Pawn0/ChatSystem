@@ -28,10 +28,11 @@
 class Message
 {
 public:
-    Message(int senderID, int channelID, const std::string& message);
+  Message (int senderID, int channelID, const std::string & message);
 private:
+  int userID;
+  int channelID;
     std::string messageText;
-    std::string messageChannel;
 
 };
 

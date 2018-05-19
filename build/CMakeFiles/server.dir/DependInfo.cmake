@@ -4,14 +4,14 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/pawn/projects/ChatSystem/Chat_System/Client/client_main.cpp" "/home/pawn/projects/ChatSystem/build/CMakeFiles/chatsystem.dir/Chat_System/Client/client_main.cpp.o"
-  "/home/pawn/projects/ChatSystem/Chat_System/Server/server_main.cpp" "/home/pawn/projects/ChatSystem/build/CMakeFiles/chatsystem.dir/Chat_System/Server/server_main.cpp.o"
+  "/home/pawn/projects/ChatSystem/Chat_System/Server/main.cpp" "/home/pawn/projects/ChatSystem/build/CMakeFiles/server.dir/Chat_System/Server/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "/usr/include/mysql"
+  "../usr/include/mysql"
+  "/usr/include/SFML"
   )
 
 # Targets to which this target links.

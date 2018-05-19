@@ -57,30 +57,45 @@ include CMakeFiles/chatsystem.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/chatsystem.dir/flags.make
 
-CMakeFiles/chatsystem.dir/Chat_System/main.cpp.o: CMakeFiles/chatsystem.dir/flags.make
-CMakeFiles/chatsystem.dir/Chat_System/main.cpp.o: ../Chat_System/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pawn/projects/ChatSystem/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/chatsystem.dir/Chat_System/main.cpp.o"
-	/usr/lib64/ccache/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/chatsystem.dir/Chat_System/main.cpp.o -c /home/pawn/projects/ChatSystem/Chat_System/main.cpp
+CMakeFiles/chatsystem.dir/Chat_System/Client/client_main.cpp.o: CMakeFiles/chatsystem.dir/flags.make
+CMakeFiles/chatsystem.dir/Chat_System/Client/client_main.cpp.o: ../Chat_System/Client/client_main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pawn/projects/ChatSystem/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/chatsystem.dir/Chat_System/Client/client_main.cpp.o"
+	/usr/lib64/ccache/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/chatsystem.dir/Chat_System/Client/client_main.cpp.o -c /home/pawn/projects/ChatSystem/Chat_System/Client/client_main.cpp
 
-CMakeFiles/chatsystem.dir/Chat_System/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/chatsystem.dir/Chat_System/main.cpp.i"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pawn/projects/ChatSystem/Chat_System/main.cpp > CMakeFiles/chatsystem.dir/Chat_System/main.cpp.i
+CMakeFiles/chatsystem.dir/Chat_System/Client/client_main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/chatsystem.dir/Chat_System/Client/client_main.cpp.i"
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pawn/projects/ChatSystem/Chat_System/Client/client_main.cpp > CMakeFiles/chatsystem.dir/Chat_System/Client/client_main.cpp.i
 
-CMakeFiles/chatsystem.dir/Chat_System/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/chatsystem.dir/Chat_System/main.cpp.s"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pawn/projects/ChatSystem/Chat_System/main.cpp -o CMakeFiles/chatsystem.dir/Chat_System/main.cpp.s
+CMakeFiles/chatsystem.dir/Chat_System/Client/client_main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/chatsystem.dir/Chat_System/Client/client_main.cpp.s"
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pawn/projects/ChatSystem/Chat_System/Client/client_main.cpp -o CMakeFiles/chatsystem.dir/Chat_System/Client/client_main.cpp.s
+
+CMakeFiles/chatsystem.dir/Chat_System/Server/server_main.cpp.o: CMakeFiles/chatsystem.dir/flags.make
+CMakeFiles/chatsystem.dir/Chat_System/Server/server_main.cpp.o: ../Chat_System/Server/server_main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pawn/projects/ChatSystem/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/chatsystem.dir/Chat_System/Server/server_main.cpp.o"
+	/usr/lib64/ccache/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/chatsystem.dir/Chat_System/Server/server_main.cpp.o -c /home/pawn/projects/ChatSystem/Chat_System/Server/server_main.cpp
+
+CMakeFiles/chatsystem.dir/Chat_System/Server/server_main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/chatsystem.dir/Chat_System/Server/server_main.cpp.i"
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pawn/projects/ChatSystem/Chat_System/Server/server_main.cpp > CMakeFiles/chatsystem.dir/Chat_System/Server/server_main.cpp.i
+
+CMakeFiles/chatsystem.dir/Chat_System/Server/server_main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/chatsystem.dir/Chat_System/Server/server_main.cpp.s"
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pawn/projects/ChatSystem/Chat_System/Server/server_main.cpp -o CMakeFiles/chatsystem.dir/Chat_System/Server/server_main.cpp.s
 
 # Object files for target chatsystem
 chatsystem_OBJECTS = \
-"CMakeFiles/chatsystem.dir/Chat_System/main.cpp.o"
+"CMakeFiles/chatsystem.dir/Chat_System/Client/client_main.cpp.o" \
+"CMakeFiles/chatsystem.dir/Chat_System/Server/server_main.cpp.o"
 
 # External object files for target chatsystem
 chatsystem_EXTERNAL_OBJECTS =
 
-chatsystem: CMakeFiles/chatsystem.dir/Chat_System/main.cpp.o
+chatsystem: CMakeFiles/chatsystem.dir/Chat_System/Client/client_main.cpp.o
+chatsystem: CMakeFiles/chatsystem.dir/Chat_System/Server/server_main.cpp.o
 chatsystem: CMakeFiles/chatsystem.dir/build.make
 chatsystem: CMakeFiles/chatsystem.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pawn/projects/ChatSystem/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable chatsystem"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pawn/projects/ChatSystem/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable chatsystem"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/chatsystem.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

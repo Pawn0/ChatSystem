@@ -16,12 +16,12 @@ Install Directory=
 Runtime=Host System
 
 [Launch]
-Launch Configurations=Launch Configuration 0
+Launch Configurations=Launch Configuration 0,Launch Configuration 1
 
 [Launch][Launch Configuration 0]
 Configured Launch Modes=execute
 Configured Launchers=nativeAppLauncher
-Name=New Compiled Binary Launcher
+Name=New Compiled Binary Launcher Client
 Type=Native Application
 
 [Launch][Launch Configuration 0][Data]
@@ -31,7 +31,25 @@ Dependency Action=Nothing
 EnvironmentGroup=
 Executable=file:///home/pawn/projects/ChatSystem
 External Terminal=konsole --noclose --workdir %workdir -e %exe
-Project Target=ChatSystem,chatsystem
+Project Target=ChatSystem,client
+Use External Terminal=false
+Working Directory=
+isExecutable=false
+
+[Launch][Launch Configuration 1]
+Configured Launch Modes=execute
+Configured Launchers=nativeAppLauncher
+Name=New Compiled Binary Launcher Serv
+Type=Native Application
+
+[Launch][Launch Configuration 1][Data]
+Arguments=
+Dependencies=@Variant(\x00\x00\x00\t\x00\x00\x00\x00\x00)
+Dependency Action=Nothing
+EnvironmentGroup=
+Executable=file:///home/pawn/projects/ChatSystem
+External Terminal=konsole --noclose --workdir %workdir -e %exe
+Project Target=ChatSystem,server
 Use External Terminal=false
 Working Directory=
 isExecutable=false

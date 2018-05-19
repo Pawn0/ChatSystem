@@ -1,7 +1,8 @@
 /home/pawn/projects/ChatSystem/build/CMakeFiles/install/strip.dir
-/home/pawn/projects/ChatSystem/build/CMakeFiles/edit_cache.dir
-/home/pawn/projects/ChatSystem/build/CMakeFiles/chatsystem.dir
+/home/pawn/projects/ChatSystem/build/CMakeFiles/server.dir
 /home/pawn/projects/ChatSystem/build/CMakeFiles/rebuild_cache.dir
-/home/pawn/projects/ChatSystem/build/CMakeFiles/list_install_components.dir
 /home/pawn/projects/ChatSystem/build/CMakeFiles/install/local.dir
+/home/pawn/projects/ChatSystem/build/CMakeFiles/client.dir
 /home/pawn/projects/ChatSystem/build/CMakeFiles/install.dir
+/home/pawn/projects/ChatSystem/build/CMakeFiles/edit_cache.dir
+/home/pawn/projects/ChatSystem/build/CMakeFiles/list_install_components.dir

@@ -35,12 +35,31 @@
  */
 
 //connection object will store all the data related to a connection
-class Connection{
+class Connection
+{
 public:
-    Connection();
+  //connect to the server, will also close connection at the end
+  bool connect ();
+
+  //disconnect from the server
+  bool disconnect ();
+  //will send a user, which has to be unpacked first
+  bool send (const User & user);
+
+  //will send a username and password, must be hashed and sent properly and securely first!
+  bool send (sf::String & username, sf::String & password);
+
+  //will send a message to the server
+  bool send (Message message);
+
+  //will send a command, meant to be used to get data from the server
+  bool send (sf::String command);
 private:
-    std::vector<std::vector<Message>> messageChannels;
-    void unpackUser();
+  //used to unpack a user object into sf objects
+  void unpack (const User & user);
+
+  //used to unpack a message
+  void unpack (const Message & message);
     sf::TcpSocket socket;
     sf::Socket::Status status;
 };

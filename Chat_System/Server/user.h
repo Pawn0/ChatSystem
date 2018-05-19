@@ -29,10 +29,10 @@ public:
     /**
      * Default constructor
      */
-    User();
+  User ();
 private:
-    
-    
+
+
 
 };
 

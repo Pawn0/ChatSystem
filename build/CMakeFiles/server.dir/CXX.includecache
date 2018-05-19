@@ -6,11 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/pawn/projects/ChatSystem/Chat_System/Client/client_main.cpp
-iostream
--
-
-/home/pawn/projects/ChatSystem/Chat_System/Server/server_main.cpp
+/home/pawn/projects/ChatSystem/Chat_System/Server/main.cpp
 mysql/mysql.h
 -
 iostream

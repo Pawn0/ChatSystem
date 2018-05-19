@@ -24,13 +24,15 @@
 /**
  * @todo write docs
  */
-class User{
+class User
+{
 public:
-    User();
-    User(const std::string& uname, const std::string& email, const std::string& password);
-    bool setServer();
+  User ();
+  User (const std::string & uname, const std::string & email,
+	const std::string & password);
+  bool setServer ();
 private:
-    void hashPassword(const std::string& password);
+  void hashPassword (const std::string & password);
     std::string username;
     std::string email;
     std::string password;

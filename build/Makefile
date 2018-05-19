@@ -68,17 +68,6 @@ install/strip/fast: preinstall/fast
 	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/usr/bin/ccmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -89,16 +78,6 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
-
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
 
 # Special rule for the target install/local
 install/local: preinstall
@@ -123,6 +102,27 @@ install/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
 	/usr/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	/usr/bin/ccmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -157,44 +157,192 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named chatsystem
+# Target rules for targets named server
 
 # Build rule for target.
-chatsystem: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 chatsystem
-.PHONY : chatsystem
+server: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 server
+.PHONY : server
 
 # fast build rule for target.
-chatsystem/fast:
-	$(MAKE) -f CMakeFiles/chatsystem.dir/build.make CMakeFiles/chatsystem.dir/build
-.PHONY : chatsystem/fast
+server/fast:
+	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/build
+.PHONY : server/fast
 
-Chat_System/main.o: Chat_System/main.cpp.o
+#=============================================================================
+# Target rules for targets named client
 
-.PHONY : Chat_System/main.o
+# Build rule for target.
+client: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 client
+.PHONY : client
+
+# fast build rule for target.
+client/fast:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/build
+.PHONY : client/fast
+
+Chat_System/Client/client.o: Chat_System/Client/client.cpp.o
+
+.PHONY : Chat_System/Client/client.o
 
 # target to build an object file
-Chat_System/main.cpp.o:
-	$(MAKE) -f CMakeFiles/chatsystem.dir/build.make CMakeFiles/chatsystem.dir/Chat_System/main.cpp.o
-.PHONY : Chat_System/main.cpp.o
+Chat_System/Client/client.cpp.o:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Chat_System/Client/client.cpp.o
+.PHONY : Chat_System/Client/client.cpp.o
 
-Chat_System/main.i: Chat_System/main.cpp.i
+Chat_System/Client/client.i: Chat_System/Client/client.cpp.i
 
-.PHONY : Chat_System/main.i
+.PHONY : Chat_System/Client/client.i
 
 # target to preprocess a source file
-Chat_System/main.cpp.i:
-	$(MAKE) -f CMakeFiles/chatsystem.dir/build.make CMakeFiles/chatsystem.dir/Chat_System/main.cpp.i
-.PHONY : Chat_System/main.cpp.i
+Chat_System/Client/client.cpp.i:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Chat_System/Client/client.cpp.i
+.PHONY : Chat_System/Client/client.cpp.i
 
-Chat_System/main.s: Chat_System/main.cpp.s
+Chat_System/Client/client.s: Chat_System/Client/client.cpp.s
 
-.PHONY : Chat_System/main.s
+.PHONY : Chat_System/Client/client.s
 
 # target to generate assembly for a file
-Chat_System/main.cpp.s:
-	$(MAKE) -f CMakeFiles/chatsystem.dir/build.make CMakeFiles/chatsystem.dir/Chat_System/main.cpp.s
-.PHONY : Chat_System/main.cpp.s
+Chat_System/Client/client.cpp.s:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Chat_System/Client/client.cpp.s
+.PHONY : Chat_System/Client/client.cpp.s
+
+Chat_System/Client/connection.o: Chat_System/Client/connection.cpp.o
+
+.PHONY : Chat_System/Client/connection.o
+
+# target to build an object file
+Chat_System/Client/connection.cpp.o:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Chat_System/Client/connection.cpp.o
+.PHONY : Chat_System/Client/connection.cpp.o
+
+Chat_System/Client/connection.i: Chat_System/Client/connection.cpp.i
+
+.PHONY : Chat_System/Client/connection.i
+
+# target to preprocess a source file
+Chat_System/Client/connection.cpp.i:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Chat_System/Client/connection.cpp.i
+.PHONY : Chat_System/Client/connection.cpp.i
+
+Chat_System/Client/connection.s: Chat_System/Client/connection.cpp.s
+
+.PHONY : Chat_System/Client/connection.s
+
+# target to generate assembly for a file
+Chat_System/Client/connection.cpp.s:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Chat_System/Client/connection.cpp.s
+.PHONY : Chat_System/Client/connection.cpp.s
+
+Chat_System/Client/main.o: Chat_System/Client/main.cpp.o
+
+.PHONY : Chat_System/Client/main.o
+
+# target to build an object file
+Chat_System/Client/main.cpp.o:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Chat_System/Client/main.cpp.o
+.PHONY : Chat_System/Client/main.cpp.o
+
+Chat_System/Client/main.i: Chat_System/Client/main.cpp.i
+
+.PHONY : Chat_System/Client/main.i
+
+# target to preprocess a source file
+Chat_System/Client/main.cpp.i:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Chat_System/Client/main.cpp.i
+.PHONY : Chat_System/Client/main.cpp.i
+
+Chat_System/Client/main.s: Chat_System/Client/main.cpp.s
+
+.PHONY : Chat_System/Client/main.s
+
+# target to generate assembly for a file
+Chat_System/Client/main.cpp.s:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Chat_System/Client/main.cpp.s
+.PHONY : Chat_System/Client/main.cpp.s
+
+Chat_System/Client/message.o: Chat_System/Client/message.cpp.o
+
+.PHONY : Chat_System/Client/message.o
+
+# target to build an object file
+Chat_System/Client/message.cpp.o:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Chat_System/Client/message.cpp.o
+.PHONY : Chat_System/Client/message.cpp.o
+
+Chat_System/Client/message.i: Chat_System/Client/message.cpp.i
+
+.PHONY : Chat_System/Client/message.i
+
+# target to preprocess a source file
+Chat_System/Client/message.cpp.i:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Chat_System/Client/message.cpp.i
+.PHONY : Chat_System/Client/message.cpp.i
+
+Chat_System/Client/message.s: Chat_System/Client/message.cpp.s
+
+.PHONY : Chat_System/Client/message.s
+
+# target to generate assembly for a file
+Chat_System/Client/message.cpp.s:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Chat_System/Client/message.cpp.s
+.PHONY : Chat_System/Client/message.cpp.s
+
+Chat_System/Client/user.o: Chat_System/Client/user.cpp.o
+
+.PHONY : Chat_System/Client/user.o
+
+# target to build an object file
+Chat_System/Client/user.cpp.o:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Chat_System/Client/user.cpp.o
+.PHONY : Chat_System/Client/user.cpp.o
+
+Chat_System/Client/user.i: Chat_System/Client/user.cpp.i
+
+.PHONY : Chat_System/Client/user.i
+
+# target to preprocess a source file
+Chat_System/Client/user.cpp.i:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Chat_System/Client/user.cpp.i
+.PHONY : Chat_System/Client/user.cpp.i
+
+Chat_System/Client/user.s: Chat_System/Client/user.cpp.s
+
+.PHONY : Chat_System/Client/user.s
+
+# target to generate assembly for a file
+Chat_System/Client/user.cpp.s:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Chat_System/Client/user.cpp.s
+.PHONY : Chat_System/Client/user.cpp.s
+
+Chat_System/Server/main.o: Chat_System/Server/main.cpp.o
+
+.PHONY : Chat_System/Server/main.o
+
+# target to build an object file
+Chat_System/Server/main.cpp.o:
+	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/Chat_System/Server/main.cpp.o
+.PHONY : Chat_System/Server/main.cpp.o
+
+Chat_System/Server/main.i: Chat_System/Server/main.cpp.i
+
+.PHONY : Chat_System/Server/main.i
+
+# target to preprocess a source file
+Chat_System/Server/main.cpp.i:
+	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/Chat_System/Server/main.cpp.i
+.PHONY : Chat_System/Server/main.cpp.i
+
+Chat_System/Server/main.s: Chat_System/Server/main.cpp.s
+
+.PHONY : Chat_System/Server/main.s
+
+# target to generate assembly for a file
+Chat_System/Server/main.cpp.s:
+	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/Chat_System/Server/main.cpp.s
+.PHONY : Chat_System/Server/main.cpp.s
 
 # Help Target
 help:
@@ -203,15 +351,31 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... install/strip"
-	@echo "... edit_cache"
-	@echo "... chatsystem"
+	@echo "... server"
 	@echo "... rebuild_cache"
-	@echo "... list_install_components"
 	@echo "... install/local"
+	@echo "... client"
 	@echo "... install"
-	@echo "... Chat_System/main.o"
-	@echo "... Chat_System/main.i"
-	@echo "... Chat_System/main.s"
+	@echo "... edit_cache"
+	@echo "... list_install_components"
+	@echo "... Chat_System/Client/client.o"
+	@echo "... Chat_System/Client/client.i"
+	@echo "... Chat_System/Client/client.s"
+	@echo "... Chat_System/Client/connection.o"
+	@echo "... Chat_System/Client/connection.i"
+	@echo "... Chat_System/Client/connection.s"
+	@echo "... Chat_System/Client/main.o"
+	@echo "... Chat_System/Client/main.i"
+	@echo "... Chat_System/Client/main.s"
+	@echo "... Chat_System/Client/message.o"
+	@echo "... Chat_System/Client/message.i"
+	@echo "... Chat_System/Client/message.s"
+	@echo "... Chat_System/Client/user.o"
+	@echo "... Chat_System/Client/user.i"
+	@echo "... Chat_System/Client/user.s"
+	@echo "... Chat_System/Server/main.o"
+	@echo "... Chat_System/Server/main.i"
+	@echo "... Chat_System/Server/main.s"
 .PHONY : help
 
 
