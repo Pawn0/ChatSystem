@@ -6,6 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/pawn/projects/ChatSystem/Chat_System/Client/client.cpp" "/home/pawn/projects/ChatSystem/build/CMakeFiles/client.dir/Chat_System/Client/client.cpp.o"
   "/home/pawn/projects/ChatSystem/Chat_System/Client/connection.cpp" "/home/pawn/projects/ChatSystem/build/CMakeFiles/client.dir/Chat_System/Client/connection.cpp.o"
+  "/home/pawn/projects/ChatSystem/Chat_System/Client/encryption.cpp" "/home/pawn/projects/ChatSystem/build/CMakeFiles/client.dir/Chat_System/Client/encryption.cpp.o"
   "/home/pawn/projects/ChatSystem/Chat_System/Client/main.cpp" "/home/pawn/projects/ChatSystem/build/CMakeFiles/client.dir/Chat_System/Client/main.cpp.o"
   "/home/pawn/projects/ChatSystem/Chat_System/Client/message.cpp" "/home/pawn/projects/ChatSystem/build/CMakeFiles/client.dir/Chat_System/Client/message.cpp.o"
   "/home/pawn/projects/ChatSystem/Chat_System/Client/user.cpp" "/home/pawn/projects/ChatSystem/build/CMakeFiles/client.dir/Chat_System/Client/user.cpp.o"
@@ -16,6 +17,7 @@ set(CMAKE_CXX_COMPILER_ID "GNU")
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../usr/include/mysql"
   "/usr/include/SFML"
+  "/usr/include/cryptopp"
   )
 
 # Targets to which this target links.

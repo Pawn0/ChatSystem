@@ -3,3 +3,6 @@
 
 CMakeFiles/server.dir/Chat_System/Server/main.cpp.o
  /home/pawn/projects/ChatSystem/Chat_System/Server/main.cpp
+CMakeFiles/server.dir/Chat_System/Server/user.cpp.o
+ /home/pawn/projects/ChatSystem/Chat_System/Server/user.cpp
+ /home/pawn/projects/ChatSystem/Chat_System/Server/user.h

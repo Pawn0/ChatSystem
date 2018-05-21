@@ -23,6 +23,9 @@ public:
   //logout
   bool logOut ();
 
+  //set the server to connect to
+  bool setServer (const std::string serverIp);
+
   //switch a channel, this may throw false if the channel switch was not sucessful
   bool switchChannel ();
 
@@ -55,6 +58,7 @@ private:
   int userID;
   int channelID;
     std::string username;
+    std::string password;
     std::string currentChannel;
     std::vector < std::vector < Message >> messageChannels;
 };

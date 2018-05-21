@@ -24,18 +24,17 @@
 /**
  * @todo write docs
  */
+
+//user is just to represent a user
 class User
 {
 public:
-  User ();
   User (const std::string & uname, const std::string & email,
 	const std::string & password);
-  bool setServer ();
 private:
   void hashPassword (const std::string & password);
     std::string username;
     std::string email;
-    std::string password;
     std::chrono::system_clock::time_point createTime;
 };
 

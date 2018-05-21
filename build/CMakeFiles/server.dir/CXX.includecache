@@ -12,3 +12,13 @@ mysql/mysql.h
 iostream
 -
 
+/home/pawn/projects/ChatSystem/Chat_System/Server/user.cpp
+user.h
+/home/pawn/projects/ChatSystem/Chat_System/Server/user.h
+
+/home/pawn/projects/ChatSystem/Chat_System/Server/user.h
+string
+-
+chrono
+-
+

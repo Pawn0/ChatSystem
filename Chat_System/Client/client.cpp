@@ -17,7 +17,6 @@
  */
 
 #include "client.h"
-
 //client is called when we create client object
 Client::Client() {
     switch ( welcomeMsg() ) {
@@ -64,12 +63,20 @@ bool Client::logIn() {
     std::cout << "Please enter your username: ";
     std::cin >> username;
 
+    std::cout << "Please enter your password: ";
+    std::cin >> password;
+
+    //create the password hash
 
 }
 
 bool Client::logOut() {
 
 }
+
+bool Client::setServer ( const std::string serverIp ) {
+}
+
 
 bool Client::switchChannel() {
 }

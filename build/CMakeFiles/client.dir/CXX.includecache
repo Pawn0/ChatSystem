@@ -46,11 +46,35 @@ user.h
 message.h
 /home/pawn/projects/ChatSystem/Chat_System/Client/message.h
 
+/home/pawn/projects/ChatSystem/Chat_System/Client/encryption.cpp
+encryption.h
+/home/pawn/projects/ChatSystem/Chat_System/Client/encryption.h
+
+/home/pawn/projects/ChatSystem/Chat_System/Client/encryption.h
+iostream
+-
+fstream
+-
+string
+-
+cryptopp/osrng.h
+-
+cryptopp/rsa.h
+-
+cryptopp/files.h
+-
+cryptopp/cryptlib.h
+-
+boost/filesystem.hpp
+-
+
 /home/pawn/projects/ChatSystem/Chat_System/Client/main.cpp
 iostream
 -
 client.h
 /home/pawn/projects/ChatSystem/Chat_System/Client/client.h
+encryption.h
+/home/pawn/projects/ChatSystem/Chat_System/Client/encryption.h
 
 /home/pawn/projects/ChatSystem/Chat_System/Client/message.cpp
 message.h

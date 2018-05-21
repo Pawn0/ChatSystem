@@ -18,9 +18,6 @@
 
 #include "user.h"
 
-User::User() {
-}
-
 User::User ( const std::string& uname, const std::string& email, const std::string& password ) {
     std::chrono::system_clock::time_point today = std::chrono::system_clock::now();
 }

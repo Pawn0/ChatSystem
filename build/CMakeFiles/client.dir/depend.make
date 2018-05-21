@@ -12,8 +12,12 @@ CMakeFiles/client.dir/Chat_System/Client/connection.cpp.o: ../Chat_System/Client
 CMakeFiles/client.dir/Chat_System/Client/connection.cpp.o: ../Chat_System/Client/message.h
 CMakeFiles/client.dir/Chat_System/Client/connection.cpp.o: ../Chat_System/Client/user.h
 
+CMakeFiles/client.dir/Chat_System/Client/encryption.cpp.o: ../Chat_System/Client/encryption.cpp
+CMakeFiles/client.dir/Chat_System/Client/encryption.cpp.o: ../Chat_System/Client/encryption.h
+
 CMakeFiles/client.dir/Chat_System/Client/main.cpp.o: ../Chat_System/Client/client.h
 CMakeFiles/client.dir/Chat_System/Client/main.cpp.o: ../Chat_System/Client/connection.h
+CMakeFiles/client.dir/Chat_System/Client/main.cpp.o: ../Chat_System/Client/encryption.h
 CMakeFiles/client.dir/Chat_System/Client/main.cpp.o: ../Chat_System/Client/main.cpp
 CMakeFiles/client.dir/Chat_System/Client/main.cpp.o: ../Chat_System/Client/message.h
 CMakeFiles/client.dir/Chat_System/Client/main.cpp.o: ../Chat_System/Client/user.h

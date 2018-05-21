@@ -1,5 +1,5 @@
 /*
- * Chat System Program
+ * <one line to give the program's name and a brief idea of what it does.>
  * Copyright (C) 2018  pawn <email>
  * 
  * This program is free software: you can redistribute it and/or modify
@@ -15,25 +15,27 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include <string>
 
 #ifndef USER_H
 #define USER_H
 
+#include <string>
+#include <chrono>
 /**
- * @todo 
+ * @todo write docs
  */
+
+//user is just to represent a user
 class User
 {
 public:
-    /**
-     * Default constructor
-     */
-  User ();
+  User (const std::string & uname, const std::string & email,
+	const std::string & password);
 private:
-
-
-
+  void hashPassword (const std::string & password);
+    std::string username;
+    std::string email;
+    std::chrono::system_clock::time_point createTime;
 };
 
 #endif // USER_H
