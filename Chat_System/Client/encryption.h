@@ -40,9 +40,10 @@ public:
     Encryption ();
     
     //will encrypt an item using the existing keys
-    std::string encrypt (const std::string & item);
+    std::string encrypt (const std::string& item);
+    
     //decryption of an item using the private key
-    std::string decrypt (const std::string & item);
+    std::string decrypt (const std::string& item);
    
 private:
     
@@ -81,6 +82,7 @@ private:
     
     
     CryptoPP::AutoSeededRandomPool rng;
+    CryptoPP::RSA::PublicKey serverPublicKey;
     CryptoPP::RSA::PrivateKey privateKey;
     CryptoPP::RSA::PublicKey publicKey;
 };

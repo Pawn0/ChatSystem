@@ -18,18 +18,18 @@
 
 #include "client.h"
 //client is called when we create client object
-Client::Client() {
-    switch ( welcomeMsg() ) {
-    case 1:
-        logIn();
-        break;
-    case 2:
-        registerUser();
-        break;
-    default:
-        welcomeMsg();
+Client::Client():con(encryption) {
+    std::cout << "Chat System Started" << std::endl;
+}
+
+void Client::client(const std::string& command){
+    while(command != "halt"){
+        int opt = 0;
+        clientMenu();
+        std::cin >> opt;
     }
 }
+
 
 bool Client::registerUser() {
     //prompt for the user information
@@ -60,21 +60,33 @@ bool Client::registerUser() {
 }//end registerUser
 
 bool Client::logIn() {
+    std::string username;
+    std::string password;
     std::cout << "Please enter your username: ";
     std::cin >> username;
 
     std::cout << "Please enter your password: ";
     std::cin >> password;
 
-    //create the password hash
-
+    //encrypt the data and rebind it
+    this->username = encryption.encrypt(username);
+    this->password = encryption.encrypt(password);
+    
+    con.send(this->username, this->password);
 }
 
 bool Client::logOut() {
 
 }
 
-bool Client::setServer ( const std::string serverIp ) {
+bool Client::setServer ( const std::string& serverIp, short unsigned int port ) {
+}
+
+void Client::setHost() {
+    std::cout << "Please enter the Host: ";
+    std::cin >> host; 
+    std::cout << "Please enter the port: ";
+    std::cin >> port;
 }
 
 
@@ -94,16 +106,29 @@ bool Client::getChannels() {
 
 }
 
-bool Client::send ( const std::string& command ) {
-}
-
-int Client::welcomeMsg() {
-    int option = 0;
-    std::cout << "Welcome to our humble chat system." << std::endl;
+void Client::clientMenu(){
     std::cout << "Please select an option." << std::endl;
     std::cout << "1. Login" << std::endl;
     std::cout << "2. Register " << std::endl;
-    std::cin >> option;
-    return option;
+    std::cout << "3. Set Host " << std::endl;
+    std::cout << "Selection: ";
+    int opt;
+    std::cin >> opt;
+    
+    switch(opt){
+        case 1:
+            logIn();
+            break;
+        case 2:
+            registerUser();
+            break;
+        case 3:
+            setHost();
+            setServer(host, port);
+            break;
+    }
 }
 
+
+bool Client::send ( const std::string& command ) {
+}

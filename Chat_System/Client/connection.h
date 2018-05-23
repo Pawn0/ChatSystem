@@ -23,11 +23,13 @@
 #define CONNECTION_H
 
 #include <vector>
+#include <string>
 #include <SFML/System.hpp>
 #include <SFML/System/Time.hpp>
 #include <SFML/Network.hpp>
 #include <SFML/Network/Packet.hpp>
 #include <SFML/Network/TcpSocket.hpp>
+#include "encryption.h"
 #include "user.h"
 #include "message.h"
 /**
@@ -35,11 +37,13 @@
  */
 
 //connection object will store all the data related to a connection
+
 class Connection
 {
 public:
+    Connection(Encryption& encryption);
   //connect to the server, will also close connection at the end
-  bool connect ();
+  bool connect (const std::string& host, short unsigned int& port);
 
   //disconnect from the server
   bool disconnect ();
@@ -54,14 +58,22 @@ public:
 
   //will send a command, meant to be used to get data from the server
   bool send (sf::String command);
+  
+  //send the publicKey to the server to encrypt the chat
+  bool sendPublicKey(const std::string& username, const std::string&password ,CryptoPP::RSA::PublicKey& publicKey);
+  
+  bool setHost(const std::string& host, short unsigned int port);
 private:
   //used to unpack a user object into sf objects
   void unpack (const User & user);
 
   //used to unpack a message
   void unpack (const Message & message);
-    sf::TcpSocket socket;
-    sf::Socket::Status status;
+    Encryption& encryption;
+    sf::TcpSocket server;
+    std::string host;
+    short unsigned int port;
+    
 };
 
 #endif // CONNECTION_H

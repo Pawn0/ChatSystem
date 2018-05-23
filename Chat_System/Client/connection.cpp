@@ -19,7 +19,22 @@
 #include "connection.h"
 //for proper sending of a user we need to unpack the data
 
-bool Connection::connect() {
+Connection::Connection(Encryption& encrypt):encryption(encrypt){
+    
+}
+
+bool Connection::connect(const std::string& host, short unsigned int& port) {
+    sf::Packet commandPacket;
+    sf::Packet dataPacket;
+    sf::String data;
+    sf::Socket::Status status = server.connect(host, port);
+    
+    //which we save and then load into the system using encrpytion
+    
+    
+    if(status != sf::Socket::Done){
+        
+    }
 }
 
 bool Connection::disconnect() {
@@ -30,6 +45,10 @@ bool Connection::send ( const User& user ) {
 }
 
 bool Connection::send ( sf::String& username, sf::String& password ) {
+    connect("localhost", 8080);
+    sf::Packet user;
+    user << "login" << username << password;
+    server.send(user);
 }
 
 bool Connection::send ( Message message ) {
@@ -42,4 +61,12 @@ void Connection::unpack ( const User& user ) {
 }
 
 void Connection::unpack ( const Message& message ) {
+}
+
+bool Connection::sendPublicKey(const std::string& username, const std::string&password, CryptoPP::RSA::PublicKey& publicKey){
+}
+
+bool Connection::setHost(const std::string& host, unsigned short port){
+    this->host = host;
+    this->port = port;
 }

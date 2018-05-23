@@ -23,12 +23,19 @@ Encryption::Encryption() {
         std::cout << "Keys are present, loading them in.." << std::endl;
         loadFromFolder("../keyFolder/publicKey", publicKey);
         loadFromFolder("../keyFolder/privateKey", privateKey);
+        if(boost::filesystem::exists ( "../serverPublicKeyFolder" )){
+            loadFromFolder("../serverPublicKeyFolder/serverPublicKey", serverPublicKey);
+        }
 
     } else { //otherwise generate,create folder ,save and load keys,
         std::cout << "Generating, saving keys, and loading them in.." << std::endl;
         generateKeys();
         loadFromFolder("../keyFolder/publicKey", publicKey);
         loadFromFolder("../keyFolder/privateKey", privateKey);
+        
+        if(boost::filesystem::exists ( "../serverPublicKeyFolder" )){
+            loadFromFolder("../serverPublicKeyFolder/serverPublicKey", serverPublicKey);
+        }
     }
 }
 
@@ -96,9 +103,10 @@ void Encryption::loadFromFolder (const std::string& fileName, CryptoPP::RSA::Pub
         
         //then validate the key
         validateKey(publicKey);
-        std::exit(1);
+        
     }catch(std::exception& ex){
         std::cout << ex.what() << std::endl;
+        std::exit(1);
     }
 }
 
@@ -144,6 +152,7 @@ bool Encryption::validateKey(CryptoPP::RSA::PrivateKey& privateKey){
 void Encryption::createKeyFolder() {
     std::cout << "Folder created" << std::endl;
     boost::filesystem::create_directories ( "../keyFolder" );
+    boost::filesystem::create_directories ("../serverPublicKeyFolder");
 }
 
 void Encryption::SaveKey ( const CryptoPP::RSA::PublicKey& key ) {
