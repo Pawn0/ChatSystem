@@ -23,11 +23,10 @@ Client::Client():con(encryption) {
 }
 
 void Client::client(const std::string& command){
-    while(command != "halt"){
-        int opt = 0;
-        clientMenu();
-        std::cin >> opt;
+    while(clientMenu() != 4){
+        //gui things
     }
+    exit(0);
 }
 
 
@@ -51,12 +50,6 @@ bool Client::registerUser() {
     User user ( username, email, password );
 
     //try to open a connection to the server to post the data
-    try {
-
-
-    } catch ( std::exception &e ) {
-        std::cout << e.what() << std::endl;
-    }
 }//end registerUser
 
 bool Client::logIn() {
@@ -67,28 +60,15 @@ bool Client::logIn() {
 
     std::cout << "Please enter your password: ";
     std::cin >> password;
-
     //encrypt the data and rebind it
     this->username = encryption.encrypt(username);
     this->password = encryption.encrypt(password);
-    
-    con.send(this->username, this->password);
+    con.send(username, password);
 }
 
 bool Client::logOut() {
 
 }
-
-bool Client::setServer ( const std::string& serverIp, short unsigned int port ) {
-}
-
-void Client::setHost() {
-    std::cout << "Please enter the Host: ";
-    std::cin >> host; 
-    std::cout << "Please enter the port: ";
-    std::cin >> port;
-}
-
 
 bool Client::switchChannel() {
 }
@@ -106,27 +86,33 @@ bool Client::getChannels() {
 
 }
 
-void Client::clientMenu(){
+int Client::clientMenu(){
     std::cout << "Please select an option." << std::endl;
     std::cout << "1. Login" << std::endl;
     std::cout << "2. Register " << std::endl;
     std::cout << "3. Set Host " << std::endl;
+    std::cout << "4. exit " << std::endl;
     std::cout << "Selection: ";
     int opt;
     std::cin >> opt;
     
     switch(opt){
-        case 1:
+        case 1://login
             logIn();
             break;
-        case 2:
+        case 2://register a new user
             registerUser();
             break;
-        case 3:
-            setHost();
-            setServer(host, port);
+        case 3://set the host of the server
+            con.setHost();
+            break;
+        case 4:
+            opt =4;
+            break;
+        default:
             break;
     }
+    return opt;
 }
 
 

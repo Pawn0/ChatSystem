@@ -371,33 +371,6 @@ Chat_System/Server/main.cpp.s:
 	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/Chat_System/Server/main.cpp.s
 .PHONY : Chat_System/Server/main.cpp.s
 
-Chat_System/Server/user.o: Chat_System/Server/user.cpp.o
-
-.PHONY : Chat_System/Server/user.o
-
-# target to build an object file
-Chat_System/Server/user.cpp.o:
-	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/Chat_System/Server/user.cpp.o
-.PHONY : Chat_System/Server/user.cpp.o
-
-Chat_System/Server/user.i: Chat_System/Server/user.cpp.i
-
-.PHONY : Chat_System/Server/user.i
-
-# target to preprocess a source file
-Chat_System/Server/user.cpp.i:
-	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/Chat_System/Server/user.cpp.i
-.PHONY : Chat_System/Server/user.cpp.i
-
-Chat_System/Server/user.s: Chat_System/Server/user.cpp.s
-
-.PHONY : Chat_System/Server/user.s
-
-# target to generate assembly for a file
-Chat_System/Server/user.cpp.s:
-	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/Chat_System/Server/user.cpp.s
-.PHONY : Chat_System/Server/user.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -433,9 +406,6 @@ help:
 	@echo "... Chat_System/Server/main.o"
 	@echo "... Chat_System/Server/main.i"
 	@echo "... Chat_System/Server/main.s"
-	@echo "... Chat_System/Server/user.o"
-	@echo "... Chat_System/Server/user.i"
-	@echo "... Chat_System/Server/user.s"
 .PHONY : help
 
 

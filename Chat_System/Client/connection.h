@@ -24,11 +24,13 @@
 
 #include <vector>
 #include <string>
+#include <fstream>
 #include <SFML/System.hpp>
 #include <SFML/System/Time.hpp>
 #include <SFML/Network.hpp>
 #include <SFML/Network/Packet.hpp>
 #include <SFML/Network/TcpSocket.hpp>
+#include <boost/lexical_cast.hpp>
 #include "encryption.h"
 #include "user.h"
 #include "message.h"
@@ -41,9 +43,8 @@
 class Connection
 {
 public:
-    Connection(Encryption& encryption);
+  Connection (Encryption & encryption);
   //connect to the server, will also close connection at the end
-  bool connect (const std::string& host, short unsigned int& port);
 
   //disconnect from the server
   bool disconnect ();
@@ -51,29 +52,32 @@ public:
   bool send (const User & user);
 
   //will send a username and password, must be hashed and sent properly and securely first!
-  bool send (sf::String & username, sf::String & password);
+  bool send (const sf::String username, const sf::String password);
 
   //will send a message to the server
-  bool send (Message message);
+  bool send (Message& message);
 
   //will send a command, meant to be used to get data from the server
   bool send (sf::String command);
-  
+
   //send the publicKey to the server to encrypt the chat
-  bool sendPublicKey(const std::string& username, const std::string&password ,CryptoPP::RSA::PublicKey& publicKey);
-  
-  bool setHost(const std::string& host, short unsigned int port);
+  void sendPublicKey ();
+
+  bool setHost ();
 private:
+  //private function to do the actual connection
+    bool connect ();
   //used to unpack a user object into sf objects
   void unpack (const User & user);
 
   //used to unpack a message
   void unpack (const Message & message);
-    Encryption& encryption;
+
+    Encryption & encryption;
     sf::TcpSocket server;
     std::string host;
-    short unsigned int port;
-    
+  short unsigned int port;
+
 };
 
 #endif // CONNECTION_H

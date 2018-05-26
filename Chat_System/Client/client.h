@@ -27,11 +27,6 @@ public:
   //logout
   bool logOut ();
 
-  //set the server to connect to
-  bool setServer (const std::string & serverIp, short unsigned int port);
-  
-  void setHost();
-
   //switch a channel, this may throw false if the channel switch was not sucessful
   bool switchChannel ();
 
@@ -48,7 +43,7 @@ public:
   bool getChannels ();
   
   //menu for the client
-  void clientMenu();
+  int clientMenu();
 private:
   //used to send commands to the server
   bool send (const std::string & command);
@@ -61,8 +56,6 @@ private:
   //and the current channel
   int userID;
   int channelID;
-  short unsigned int port;
-    std::string host;
     sf::String username;
     sf::String password;
     std::string currentChannel;
