@@ -12,8 +12,25 @@ CMake Binary=/usr/bin/cmake
 CMake Executable=/usr/bin/cmake
 Environment Profile=
 Extra Arguments=
-Install Directory=
+Install Directory=/usr/local
 Runtime=Host System
+
+[Cppcheck]
+checkPerformance=true
+checkPortability=true
+checkStyle=true
+
+[CustomDefinesAndIncludes][ProjectPath0]
+Path=.
+parseAmbiguousAsCPP=true
+parserArguments=-ferror-limit=100 -fspell-checking -Wdocumentation -Wunused-parameter -Wunreachable-code -Wall -std=c++11
+parserArgumentsC=-ferror-limit=100 -fspell-checking -Wdocumentation -Wunused-parameter -Wunreachable-code -Wall -std=c99
+
+[CustomDefinesAndIncludes][ProjectPath0][Compiler]
+Name=Clang
+
+[CustomDefinesAndIncludes][ProjectPath0][Includes]
+1=/home/pawn/projects/ChatSystem/include/
 
 [Launch]
 Launch Configurations=Launch Configuration 0,Launch Configuration 1
@@ -32,7 +49,7 @@ EnvironmentGroup=
 Executable=file:///home/pawn/projects/ChatSystem
 External Terminal=konsole --noclose --workdir %workdir -e %exe
 Project Target=ChatSystem,client
-Use External Terminal=false
+Use External Terminal=true
 Working Directory=
 isExecutable=false
 
@@ -59,3 +76,11 @@ VersionControlSupport=kdevgit
 
 [SourceFileTemplates]
 LastUsedTemplate=/home/pawn/.local/share/kdevfiletemplates/template_descriptions/cpp_basic.desktop
+
+[SourceFormatter]
+text/x-c++hdr=kdevcustomscript||GNU_indent_GNU
+text/x-c++src=kdevcustomscript||GNU_indent_GNU
+text/x-chdr=kdevcustomscript||GNU_indent_GNU
+text/x-csharp=kdevcustomscript||GNU_indent_GNU
+text/x-csrc=kdevcustomscript||GNU_indent_GNU
+text/x-java=kdevcustomscript||GNU_indent_GNU

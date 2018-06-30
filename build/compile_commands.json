@@ -1,0 +1,47 @@
+[
+{
+  "directory": "/home/pawn/projects/ChatSystem/build",
+  "command": "/usr/lib64/ccache/c++   -I/home/pawn/projects/ChatSystem/usr/include/mysql -I/home/pawn/projects/ChatSystem/usr/include/SFML -I/home/pawn/projects/ChatSystem/usr/include/cryptopp -I/home/pawn/projects/ChatSystem/usr/include/libssh  -g   -std=c++11 -o CMakeFiles/server.dir/Chat_System/Server/main.cpp.o -c /home/pawn/projects/ChatSystem/Chat_System/Server/main.cpp",
+  "file": "/home/pawn/projects/ChatSystem/Chat_System/Server/main.cpp"
+},
+{
+  "directory": "/home/pawn/projects/ChatSystem/build",
+  "command": "/usr/lib64/ccache/c++   -I/home/pawn/projects/ChatSystem/usr/include/mysql -I/home/pawn/projects/ChatSystem/usr/include/SFML -I/home/pawn/projects/ChatSystem/usr/include/cryptopp -I/home/pawn/projects/ChatSystem/usr/include/libssh  -g   -std=c++11 -o CMakeFiles/server.dir/Chat_System/Client/encryption.cpp.o -c /home/pawn/projects/ChatSystem/Chat_System/Client/encryption.cpp",
+  "file": "/home/pawn/projects/ChatSystem/Chat_System/Client/encryption.cpp"
+},
+{
+  "directory": "/home/pawn/projects/ChatSystem/build",
+  "command": "/usr/lib64/ccache/c++   -I/home/pawn/projects/ChatSystem/usr/include/mysql -I/home/pawn/projects/ChatSystem/usr/include/SFML -I/home/pawn/projects/ChatSystem/usr/include/cryptopp -I/home/pawn/projects/ChatSystem/usr/include/libssh  -g   -std=c++11 -o CMakeFiles/server.dir/Chat_System/Server/server.cpp.o -c /home/pawn/projects/ChatSystem/Chat_System/Server/server.cpp",
+  "file": "/home/pawn/projects/ChatSystem/Chat_System/Server/server.cpp"
+},
+{
+  "directory": "/home/pawn/projects/ChatSystem/build",
+  "command": "/usr/lib64/ccache/c++   -I/home/pawn/projects/ChatSystem/usr/include/mysql -I/home/pawn/projects/ChatSystem/usr/include/SFML -I/home/pawn/projects/ChatSystem/usr/include/cryptopp -I/home/pawn/projects/ChatSystem/usr/include/libssh  -g   -std=c++11 -o CMakeFiles/client.dir/Chat_System/Client/main.cpp.o -c /home/pawn/projects/ChatSystem/Chat_System/Client/main.cpp",
+  "file": "/home/pawn/projects/ChatSystem/Chat_System/Client/main.cpp"
+},
+{
+  "directory": "/home/pawn/projects/ChatSystem/build",
+  "command": "/usr/lib64/ccache/c++   -I/home/pawn/projects/ChatSystem/usr/include/mysql -I/home/pawn/projects/ChatSystem/usr/include/SFML -I/home/pawn/projects/ChatSystem/usr/include/cryptopp -I/home/pawn/projects/ChatSystem/usr/include/libssh  -g   -std=c++11 -o CMakeFiles/client.dir/Chat_System/Client/client.cpp.o -c /home/pawn/projects/ChatSystem/Chat_System/Client/client.cpp",
+  "file": "/home/pawn/projects/ChatSystem/Chat_System/Client/client.cpp"
+},
+{
+  "directory": "/home/pawn/projects/ChatSystem/build",
+  "command": "/usr/lib64/ccache/c++   -I/home/pawn/projects/ChatSystem/usr/include/mysql -I/home/pawn/projects/ChatSystem/usr/include/SFML -I/home/pawn/projects/ChatSystem/usr/include/cryptopp -I/home/pawn/projects/ChatSystem/usr/include/libssh  -g   -std=c++11 -o CMakeFiles/client.dir/Chat_System/Client/connection.cpp.o -c /home/pawn/projects/ChatSystem/Chat_System/Client/connection.cpp",
+  "file": "/home/pawn/projects/ChatSystem/Chat_System/Client/connection.cpp"
+},
+{
+  "directory": "/home/pawn/projects/ChatSystem/build",
+  "command": "/usr/lib64/ccache/c++   -I/home/pawn/projects/ChatSystem/usr/include/mysql -I/home/pawn/projects/ChatSystem/usr/include/SFML -I/home/pawn/projects/ChatSystem/usr/include/cryptopp -I/home/pawn/projects/ChatSystem/usr/include/libssh  -g   -std=c++11 -o CMakeFiles/client.dir/Chat_System/Client/message.cpp.o -c /home/pawn/projects/ChatSystem/Chat_System/Client/message.cpp",
+  "file": "/home/pawn/projects/ChatSystem/Chat_System/Client/message.cpp"
+},
+{
+  "directory": "/home/pawn/projects/ChatSystem/build",
+  "command": "/usr/lib64/ccache/c++   -I/home/pawn/projects/ChatSystem/usr/include/mysql -I/home/pawn/projects/ChatSystem/usr/include/SFML -I/home/pawn/projects/ChatSystem/usr/include/cryptopp -I/home/pawn/projects/ChatSystem/usr/include/libssh  -g   -std=c++11 -o CMakeFiles/client.dir/Chat_System/Client/user.cpp.o -c /home/pawn/projects/ChatSystem/Chat_System/Client/user.cpp",
+  "file": "/home/pawn/projects/ChatSystem/Chat_System/Client/user.cpp"
+},
+{
+  "directory": "/home/pawn/projects/ChatSystem/build",
+  "command": "/usr/lib64/ccache/c++   -I/home/pawn/projects/ChatSystem/usr/include/mysql -I/home/pawn/projects/ChatSystem/usr/include/SFML -I/home/pawn/projects/ChatSystem/usr/include/cryptopp -I/home/pawn/projects/ChatSystem/usr/include/libssh  -g   -std=c++11 -o CMakeFiles/client.dir/Chat_System/Client/encryption.cpp.o -c /home/pawn/projects/ChatSystem/Chat_System/Client/encryption.cpp",
+  "file": "/home/pawn/projects/ChatSystem/Chat_System/Client/encryption.cpp"
+}
+]

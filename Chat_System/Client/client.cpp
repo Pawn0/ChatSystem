@@ -16,43 +16,51 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "client.h"
+#include "client.hpp"
 //client is called when we create client object
-Client::Client():con(encryption) {
+Client::Client()
+{
     std::cout << "Chat System Started" << std::endl;
+    con.setHost();
 }
 
-void Client::client(const std::string& command){
-    while(clientMenu() != 4){
-        //gui things
+void Client::client()
+{
+    //this shows the client menu
+    //which will be replaced with an actual gui
+    while (clientMenu() != 4) {
     }
     exit(0);
 }
 
 
-bool Client::registerUser() {
+void Client::registerUser()
+{
+    std::string username;
+    std::string password;
     //prompt for the user information
     //then call a function to send it to the server
     std::cout << "Please enter your username: ";
-    std::string username;
-    std::cin >> username;
+    std::cin >> user.username;
 
     std::cout << "Please enter your email: ";
     std::string email;
-    std::cin >> email;
+    std::cin >> user.email;
 
     std::cout << "Please enter your password: ";
-    std::string password;
     std::cin >> password;
-
-
+    
+    std::string loginData = username + ":" + password;
+    
     //create the user object
-    User user ( username, email, password );
+    user.username = username;
+    user.email = email;
+    user.loginData = loginData;
+    con.send("register", user);
+}
 
-    //try to open a connection to the server to post the data
-}//end registerUser
-
-bool Client::logIn() {
+bool Client::logIn()
+{
     std::string username;
     std::string password;
     std::cout << "Please enter your username: ";
@@ -60,33 +68,47 @@ bool Client::logIn() {
 
     std::cout << "Please enter your password: ";
     std::cin >> password;
+
+    std::string loginData = username + ":" + password;
+    
+    user.username = username;
+    user.loginData = loginData;
     //encrypt the data and rebind it
-    this->username = encryption.encrypt(username);
-    this->password = encryption.encrypt(password);
-    con.send(username, password);
+    return con.send("login", user);
 }
 
-bool Client::logOut() {
+bool Client::logOut()
+{
+    //send a command to the server that we are logging logOut
+    //and finally disconnect
+    return con.disconnect();
+}
+
+bool Client::switchChannel()
+{
+    getMessages
+}
+
+const std::string & Client::getChannel()
+{
+}
+
+bool Client::getMessages()
+{
+}
+
+bool Client::sendMessage(const std::string & message)
+{
 
 }
 
-bool Client::switchChannel() {
-}
-
-const std::string& Client::getChannel() {
-}
-
-bool Client::sendMessage ( Message msg ) {
-}
-
-bool Client::getMessages() {
-}
-
-bool Client::getChannels() {
+bool Client::getChannels()
+{
 
 }
 
-int Client::clientMenu(){
+int Client::clientMenu()
+{
     std::cout << "Please select an option." << std::endl;
     std::cout << "1. Login" << std::endl;
     std::cout << "2. Register " << std::endl;
@@ -95,26 +117,23 @@ int Client::clientMenu(){
     std::cout << "Selection: ";
     int opt;
     std::cin >> opt;
-    
-    switch(opt){
-        case 1://login
-            logIn();
-            break;
-        case 2://register a new user
-            registerUser();
-            break;
-        case 3://set the host of the server
-            con.setHost();
-            break;
-        case 4:
-            opt =4;
-            break;
-        default:
-            break;
+
+    switch (opt) {
+    case 1:			//login
+	logIn();
+	break;
+    case 2:			//register a new user
+	registerUser();
+	break;
+    case 3:			//set the host of the server
+	con.setHost();
+	break;
+    case 4:
+	opt = 4;
+	con.disconnect();
+	break;
+    default:
+	break;
     }
     return opt;
-}
-
-
-bool Client::send ( const std::string& command ) {
 }

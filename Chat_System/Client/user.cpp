@@ -16,12 +16,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "user.h"
+#include "user.hpp"
 
-User::User ( const std::string& uname, const std::string& email, const std::string& password ) {
-    std::chrono::system_clock::time_point today = std::chrono::system_clock::now();
+User::User()
+{
 }
 
-void User::hashPassword ( const std::string& password ) {
+User::User::User(const std::string& uname, const std::string& email,const std::string& loginData)
+{
 }
 

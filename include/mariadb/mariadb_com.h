@@ -30,7 +30,7 @@
 
 
 #define NAME_CHAR_LEN   64
-#define NAME_LEN	256		/* Field/table name length */
+#define NAME_LEN	256	/* Field/table name length */
 #define HOSTNAME_LENGTH 60
 #define SYSTEM_MB_MAX_CHAR_LENGTH 4
 #define USERNAME_CHAR_LENGTH 128
@@ -55,8 +55,8 @@
 enum mysql_enum_shutdown_level
 {
   SHUTDOWN_DEFAULT = 0,
-  KILL_QUERY= 254,
-  KILL_CONNECTION= 255
+  KILL_QUERY = 254,
+  KILL_CONNECTION = 255
 };
 
 enum enum_server_command
@@ -90,8 +90,8 @@ enum enum_server_command
   COM_STMT_RESET = 26,
   COM_SET_OPTION = 27,
   COM_STMT_FETCH = 28,
-  COM_DAEMON= 29,
-  COM_UNSUPPORTED= 30,
+  COM_DAEMON = 29,
+  COM_UNSUPPORTED = 30,
   COM_RESET_CONNECTION = 31,
   COM_STMT_BULK_EXECUTE = 250,
   COM_MULTI = 254,
@@ -99,27 +99,27 @@ enum enum_server_command
 };
 
 
-#define NOT_NULL_FLAG	1		/* Field can't be NULL */
-#define PRI_KEY_FLAG	2		/* Field is part of a primary key */
-#define UNIQUE_KEY_FLAG 4		/* Field is part of a unique key */
-#define MULTIPLE_KEY_FLAG 8		/* Field is part of a key */
-#define BLOB_FLAG	16		/* Field is a blob */
-#define UNSIGNED_FLAG	32		/* Field is unsigned */
-#define ZEROFILL_FLAG	64		/* Field is zerofill */
+#define NOT_NULL_FLAG	1	/* Field can't be NULL */
+#define PRI_KEY_FLAG	2	/* Field is part of a primary key */
+#define UNIQUE_KEY_FLAG 4	/* Field is part of a unique key */
+#define MULTIPLE_KEY_FLAG 8	/* Field is part of a key */
+#define BLOB_FLAG	16	/* Field is a blob */
+#define UNSIGNED_FLAG	32	/* Field is unsigned */
+#define ZEROFILL_FLAG	64	/* Field is zerofill */
 #define BINARY_FLAG	128
 /* The following are only sent to new clients */
-#define ENUM_FLAG	256		/* field is an enum */
-#define AUTO_INCREMENT_FLAG 512		/* field is a autoincrement field */
-#define TIMESTAMP_FLAG	1024		/* Field is a timestamp */
-#define SET_FLAG	2048		/* field is a set */
+#define ENUM_FLAG	256	/* field is an enum */
+#define AUTO_INCREMENT_FLAG 512	/* field is a autoincrement field */
+#define TIMESTAMP_FLAG	1024	/* Field is a timestamp */
+#define SET_FLAG	2048	/* field is a set */
 /* new since 3.23.58 */
 #define NO_DEFAULT_VALUE_FLAG 4096	/* Field doesn't have default value */
-#define ON_UPDATE_NOW_FLAG 8192         /* Field is set to NOW on UPDATE */
+#define ON_UPDATE_NOW_FLAG 8192	/* Field is set to NOW on UPDATE */
 /* end new */
-#define NUM_FLAG	32768		/* Field is num (for clients) */
-#define PART_KEY_FLAG	16384		/* Intern; Part of some key */
-#define GROUP_FLAG	32768		/* Intern: Group field */
-#define UNIQUE_FLAG	65536		/* Intern: Used by sql_yacc */
+#define NUM_FLAG	32768	/* Field is num (for clients) */
+#define PART_KEY_FLAG	16384	/* Intern; Part of some key */
+#define GROUP_FLAG	32768	/* Intern: Group field */
+#define UNIQUE_FLAG	65536	/* Intern: Used by sql_yacc */
 
 #define REFRESH_GRANT		1	/* Refresh grant tables */
 #define REFRESH_LOG		2	/* Start on new log file */
@@ -127,9 +127,9 @@ enum enum_server_command
 #define REFRESH_HOSTS		8	/* Flush host cache */
 #define REFRESH_STATUS		16	/* Flush status variables */
 #define REFRESH_THREADS		32	/* Flush thread cache */
-#define REFRESH_SLAVE           64      /* Reset master info and restart slave
+#define REFRESH_SLAVE           64	/* Reset master info and restart slave
 					   thread */
-#define REFRESH_MASTER          128     /* Remove all bin logs in the index
+#define REFRESH_MASTER          128	/* Remove all bin logs in the index
 					   and truncate the index */
 
 /* The following can't be set with mysql_refresh() */
@@ -146,13 +146,13 @@ enum enum_server_command
 #define CLIENT_LOCAL_FILES	  128	/* Can use LOAD DATA LOCAL */
 #define CLIENT_IGNORE_SPACE	  256	/* Ignore spaces before '(' */
 #define CLIENT_INTERACTIVE	  1024	/* This is an interactive client */
-#define CLIENT_SSL                2048     /* Switch to SSL after handshake */
-#define CLIENT_IGNORE_SIGPIPE     4096     /* IGNORE sigpipes */
+#define CLIENT_SSL                2048	/* Switch to SSL after handshake */
+#define CLIENT_IGNORE_SIGPIPE     4096	/* IGNORE sigpipes */
 #define CLIENT_TRANSACTIONS	  8192	/* Client knows about transactions */
 /* added in 4.x */
 #define CLIENT_PROTOCOL_41         512
 #define CLIENT_RESERVED          16384
-#define CLIENT_SECURE_CONNECTION 32768  
+#define CLIENT_SECURE_CONNECTION 32768
 #define CLIENT_MULTI_STATEMENTS  (1UL << 16)
 #define CLIENT_MULTI_RESULTS     (1UL << 17)
 #define CLIENT_PS_MULTI_RESULTS  (1UL << 18)
@@ -160,8 +160,8 @@ enum enum_server_command
 #define CLIENT_CONNECT_ATTRS     (1UL << 20)
 #define CLIENT_CAN_HANDLE_EXPIRED_PASSWORDS (1UL << 22)
 #define CLIENT_SESSION_TRACKING  (1UL << 23)
-#define CLIENT_PROGRESS          (1UL << 29) /* client supports progress indicator */
-#define CLIENT_PROGRESS_OBSOLETE  CLIENT_PROGRESS 
+#define CLIENT_PROGRESS          (1UL << 29)	/* client supports progress indicator */
+#define CLIENT_PROGRESS_OBSOLETE  CLIENT_PROGRESS
 #define CLIENT_SSL_VERIFY_SERVER_CERT (1UL << 30)
 #define CLIENT_REMEMBER_OPTIONS  (1UL << 31)
 
@@ -224,7 +224,7 @@ enum enum_server_command
 #define SERVER_QUERY_NO_INDEX_USED          32
 #define SERVER_STATUS_CURSOR_EXISTS         64
 #define SERVER_STATUS_LAST_ROW_SENT        128
-#define SERVER_STATUS_DB_DROPPED           256 
+#define SERVER_STATUS_DB_DROPPED           256
 #define SERVER_STATUS_NO_BACKSLASH_ESCAPES 512
 #define SERVER_STATUS_METADATA_CHANGED    1024
 #define SERVER_QUERY_WAS_SLOW             2048
@@ -234,9 +234,9 @@ enum enum_server_command
 #define SERVER_STATUS_ANSI_QUOTES        32768
 
 #define MYSQL_ERRMSG_SIZE	512
-#define NET_READ_TIMEOUT	30		/* Timeout on read */
-#define NET_WRITE_TIMEOUT	60		/* Timeout on write */
-#define NET_WAIT_TIMEOUT	8*60*60		/* Wait for new query */
+#define NET_READ_TIMEOUT	30	/* Timeout on read */
+#define NET_WRITE_TIMEOUT	60	/* Timeout on write */
+#define NET_WAIT_TIMEOUT	8*60*60	/* Wait for new query */
 
 /* for server integration (mysqlbinlog) */
 #define LIST_PROCESS_HOST_LEN 64
@@ -262,12 +262,13 @@ typedef struct st_ma_pvio MARIADB_PVIO;
 struct st_ma_connection_plugin;
 
 
-typedef struct st_net {
+typedef struct st_net
+{
   MARIADB_PVIO *pvio;
   unsigned char *buff;
-  unsigned char *buff_end,*write_pos,*read_pos;
-  my_socket fd;					/* For Perl DBI/dbd */
-  unsigned long remain_in_buf,length;
+  unsigned char *buff_end, *write_pos, *read_pos;
+  my_socket fd;			/* For Perl DBI/dbd */
+  unsigned long remain_in_buf, length;
   unsigned long buf_length, where_b;
   unsigned long max_packet, max_packet_size;
   unsigned int pkt_nr, compress_pkt_nr;
@@ -286,7 +287,7 @@ typedef struct st_net {
   my_bool unused_5;
   my_bool unused_6;
   char last_error[MYSQL_ERRMSG_SIZE];
-  char sqlstate[SQLSTATE_LENGTH+1];
+  char sqlstate[SQLSTATE_LENGTH + 1];
   struct st_mariadb_net_extension *extension;
 } NET;
 
@@ -301,51 +302,53 @@ enum enum_mysql_set_option
 
 enum enum_session_state_type
 {
-  SESSION_TRACK_SYSTEM_VARIABLES= 0,
+  SESSION_TRACK_SYSTEM_VARIABLES = 0,
   SESSION_TRACK_SCHEMA,
   SESSION_TRACK_STATE_CHANGE,
   /* currently not supported by MariaDB Server */
   SESSION_TRACK_GTIDS,
   SESSION_TRACK_TRANSACTION_CHARACTERISTICS,
-  SESSION_TRACK_TRANSACTION_TYPE /* make sure that SESSION_TRACK_END always points
-                                    to last element of enum !! */
+  SESSION_TRACK_TRANSACTION_TYPE	/* make sure that SESSION_TRACK_END always points
+					   to last element of enum !! */
 };
 
 #define SESSION_TRACK_BEGIN 0
 #define SESSION_TRACK_END SESSION_TRACK_TRANSACTION_TYPE
 #define SESSION_TRACK_TYPES SESSION_TRACK_END + 1
 
-enum enum_field_types { MYSQL_TYPE_DECIMAL, MYSQL_TYPE_TINY,
-                        MYSQL_TYPE_SHORT,  MYSQL_TYPE_LONG,
-                        MYSQL_TYPE_FLOAT,  MYSQL_TYPE_DOUBLE,
-                        MYSQL_TYPE_NULL,   MYSQL_TYPE_TIMESTAMP,
-                        MYSQL_TYPE_LONGLONG,MYSQL_TYPE_INT24,
-                        MYSQL_TYPE_DATE,   MYSQL_TYPE_TIME,
-                        MYSQL_TYPE_DATETIME, MYSQL_TYPE_YEAR,
-                        MYSQL_TYPE_NEWDATE, MYSQL_TYPE_VARCHAR,
-                        MYSQL_TYPE_BIT,
-                        /*
-                          the following types are not used by client,
-                          only for mysqlbinlog!!
-                        */
-                        MYSQL_TYPE_TIMESTAMP2,
-                        MYSQL_TYPE_DATETIME2,
-                        MYSQL_TYPE_TIME2,
-                        /* --------------------------------------------- */
-                        MYSQL_TYPE_JSON=245,
-                        MYSQL_TYPE_NEWDECIMAL=246,
-                        MYSQL_TYPE_ENUM=247,
-                        MYSQL_TYPE_SET=248,
-                        MYSQL_TYPE_TINY_BLOB=249,
-                        MYSQL_TYPE_MEDIUM_BLOB=250,
-                        MYSQL_TYPE_LONG_BLOB=251,
-                        MYSQL_TYPE_BLOB=252,
-                        MYSQL_TYPE_VAR_STRING=253,
-                        MYSQL_TYPE_STRING=254,
-                        MYSQL_TYPE_GEOMETRY=255,
-                        MAX_NO_FIELD_TYPES };
+enum enum_field_types
+{ MYSQL_TYPE_DECIMAL, MYSQL_TYPE_TINY,
+  MYSQL_TYPE_SHORT, MYSQL_TYPE_LONG,
+  MYSQL_TYPE_FLOAT, MYSQL_TYPE_DOUBLE,
+  MYSQL_TYPE_NULL, MYSQL_TYPE_TIMESTAMP,
+  MYSQL_TYPE_LONGLONG, MYSQL_TYPE_INT24,
+  MYSQL_TYPE_DATE, MYSQL_TYPE_TIME,
+  MYSQL_TYPE_DATETIME, MYSQL_TYPE_YEAR,
+  MYSQL_TYPE_NEWDATE, MYSQL_TYPE_VARCHAR,
+  MYSQL_TYPE_BIT,
+  /*
+     the following types are not used by client,
+     only for mysqlbinlog!!
+   */
+  MYSQL_TYPE_TIMESTAMP2,
+  MYSQL_TYPE_DATETIME2,
+  MYSQL_TYPE_TIME2,
+  /* --------------------------------------------- */
+  MYSQL_TYPE_JSON = 245,
+  MYSQL_TYPE_NEWDECIMAL = 246,
+  MYSQL_TYPE_ENUM = 247,
+  MYSQL_TYPE_SET = 248,
+  MYSQL_TYPE_TINY_BLOB = 249,
+  MYSQL_TYPE_MEDIUM_BLOB = 250,
+  MYSQL_TYPE_LONG_BLOB = 251,
+  MYSQL_TYPE_BLOB = 252,
+  MYSQL_TYPE_VAR_STRING = 253,
+  MYSQL_TYPE_STRING = 254,
+  MYSQL_TYPE_GEOMETRY = 255,
+  MAX_NO_FIELD_TYPES
+};
 
-#define FIELD_TYPE_CHAR FIELD_TYPE_TINY		/* For compatibility */
+#define FIELD_TYPE_CHAR FIELD_TYPE_TINY	/* For compatibility */
 #define FIELD_TYPE_INTERVAL FIELD_TYPE_ENUM	/* For compatibility */
 #define FIELD_TYPE_DECIMAL MYSQL_TYPE_DECIMAL
 #define FIELD_TYPE_NEWDECIMAL MYSQL_TYPE_NEWDECIMAL
@@ -379,43 +382,46 @@ extern unsigned long net_buffer_length;
 
 #define net_new_transaction(net) ((net)->pkt_nr=0)
 
-int	ma_net_init(NET *net, MARIADB_PVIO *pvio);
-void	ma_net_end(NET *net);
-void	ma_net_clear(NET *net);
-int	ma_net_flush(NET *net);
-int	ma_net_write(NET *net,const unsigned char *packet, size_t len);
-int	ma_net_write_command(NET *net,unsigned char command,const char *packet,
-			  size_t len, my_bool disable_flush);
-int	ma_net_real_write(NET *net,const char *packet, size_t len);
-extern unsigned long ma_net_read(NET *net);
+int ma_net_init (NET * net, MARIADB_PVIO * pvio);
+void ma_net_end (NET * net);
+void ma_net_clear (NET * net);
+int ma_net_flush (NET * net);
+int ma_net_write (NET * net, const unsigned char *packet, size_t len);
+int ma_net_write_command (NET * net, unsigned char command,
+			  const char *packet, size_t len,
+			  my_bool disable_flush);
+int ma_net_real_write (NET * net, const char *packet, size_t len);
+extern unsigned long ma_net_read (NET * net);
 
-struct rand_struct {
-  unsigned long seed1,seed2,max_value;
+struct rand_struct
+{
+  unsigned long seed1, seed2, max_value;
   double max_value_dbl;
 };
 
   /* The following is for user defined functions */
 
-enum Item_result {STRING_RESULT,REAL_RESULT,INT_RESULT,ROW_RESULT,DECIMAL_RESULT};
+enum Item_result
+{ STRING_RESULT, REAL_RESULT, INT_RESULT, ROW_RESULT, DECIMAL_RESULT };
 
 typedef struct st_udf_args
 {
-  unsigned int arg_count;		/* Number of arguments */
-  enum Item_result *arg_type;		/* Pointer to item_results */
-  char **args;				/* Pointer to argument */
-  unsigned long *lengths;		/* Length of string arguments */
-  char *maybe_null;			/* Set to 1 for all maybe_null args */
+  unsigned int arg_count;	/* Number of arguments */
+  enum Item_result *arg_type;	/* Pointer to item_results */
+  char **args;			/* Pointer to argument */
+  unsigned long *lengths;	/* Length of string arguments */
+  char *maybe_null;		/* Set to 1 for all maybe_null args */
 } UDF_ARGS;
 
   /* This holds information about the result */
 
 typedef struct st_udf_init
 {
-  my_bool maybe_null;			/* 1 if function can return NULL */
-  unsigned int decimals;		/* for real functions */
-  unsigned int max_length;		/* For string functions */
-  char	  *ptr;				/* free pointer for function data */
-  my_bool const_item;			/* 0 if result is independent of arguments */
+  my_bool maybe_null;		/* 1 if function can return NULL */
+  unsigned int decimals;	/* for real functions */
+  unsigned int max_length;	/* For string functions */
+  char *ptr;			/* free pointer for function data */
+  my_bool const_item;		/* 0 if result is independent of arguments */
 } UDF_INIT;
 
 /* Connection types */
@@ -425,33 +431,36 @@ typedef struct st_udf_init
 #define MARIADB_CONNECTION_SHAREDMEM    3
 
   /* Constants when using compression */
-#define NET_HEADER_SIZE 4		/* standard header size */
-#define COMP_HEADER_SIZE 3		/* compression header extra size */
+#define NET_HEADER_SIZE 4	/* standard header size */
+#define COMP_HEADER_SIZE 3	/* compression header extra size */
 
   /* Prototypes to password functions */
 #define native_password_plugin_name "mysql_native_password"
 #define old_password_plugin_name    "mysql_old_password"
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif
-  
-char *ma_scramble_323(char *to,const char *message,const char *password);
-void ma_scramble_41(const unsigned char *buffer, const char *scramble, const char *password);
-void ma_hash_password(unsigned long *result, const char *password, size_t len);
-void ma_make_scrambled_password(char *to,const char *password);
+
+  char *ma_scramble_323 (char *to, const char *message, const char *password);
+  void ma_scramble_41 (const unsigned char *buffer, const char *scramble,
+		       const char *password);
+  void ma_hash_password (unsigned long *result, const char *password,
+			 size_t len);
+  void ma_make_scrambled_password (char *to, const char *password);
 
 /* Some other useful functions */
 
-void mariadb_load_defaults(const char *conf_file, const char **groups,
-		   int *argc, char ***argv);
-my_bool ma_thread_init(void);
-void ma_thread_end(void);
+  void mariadb_load_defaults (const char *conf_file, const char **groups,
+			      int *argc, char ***argv);
+  my_bool ma_thread_init (void);
+  void ma_thread_end (void);
 
 #ifdef __cplusplus
 }
 #endif
 
-#define NULL_LENGTH ((unsigned long) ~0) /* For net_store_length */
+#define NULL_LENGTH ((unsigned long) ~0)	/* For net_store_length */
 
 #endif

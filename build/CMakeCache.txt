@@ -19,7 +19,7 @@ CMAKE_AR:FILEPATH=/usr/bin/ar
 
 //Choose the type of build, options are: None Debug Release RelWithDebInfo
 // MinSizeRel ...
-CMAKE_BUILD_TYPE:STRING=
+CMAKE_BUILD_TYPE:STRING=Debug
 
 //Enable/Disable color output during build.
 CMAKE_COLOR_MAKEFILE:BOOL=ON
@@ -92,7 +92,7 @@ CMAKE_EXE_LINKER_FLAGS_RELEASE:STRING=
 CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 
 //Enable/Disable output of compile commands during generation.
-CMAKE_EXPORT_COMPILE_COMMANDS:BOOL=OFF
+CMAKE_EXPORT_COMPILE_COMMANDS:BOOL=ON
 
 //Install path prefix, prepended onto install directories.
 CMAKE_INSTALL_PREFIX:PATH=/usr/local
@@ -206,14 +206,14 @@ chatsystem_BINARY_DIR:STATIC=/home/pawn/projects/ChatSystem/build
 //Value Computed by CMake
 chatsystem_SOURCE_DIR:STATIC=/home/pawn/projects/ChatSystem
 
-//Path to a library.
-lib:FILEPATH=lib-NOTFOUND
+//No help, variable specified on the command line.
+lib:FILEPATH=
 
-//Path to a library.
-libname:FILEPATH=libname-NOTFOUND
+//No help, variable specified on the command line.
+libname:FILEPATH=
 
-//Path to a library.
-maria_lib:FILEPATH=maria_lib-NOTFOUND
+//No help, variable specified on the command line.
+maria_lib:FILEPATH=
 
 
 ########################
@@ -229,7 +229,7 @@ CMAKE_CACHE_MAJOR_VERSION:INTERNAL=3
 //Minor version of cmake used to create the current loaded cache
 CMAKE_CACHE_MINOR_VERSION:INTERNAL=11
 //Patch version of cmake used to create the current loaded cache
-CMAKE_CACHE_PATCH_VERSION:INTERNAL=0
+CMAKE_CACHE_PATCH_VERSION:INTERNAL=2
 //ADVANCED property for variable: CMAKE_COLOR_MAKEFILE
 CMAKE_COLOR_MAKEFILE-ADVANCED:INTERNAL=1
 //Path to CMake executable.

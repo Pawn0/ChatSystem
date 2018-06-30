@@ -39,15 +39,15 @@
 #define plugin_declarations_sym "_mysql_client_plugin_declaration_"
 
 /* known plugin types */
-#define MYSQL_CLIENT_PLUGIN_RESERVED         0 
+#define MYSQL_CLIENT_PLUGIN_RESERVED         0
 #define MYSQL_CLIENT_PLUGIN_RESERVED2        1
-#define MYSQL_CLIENT_AUTHENTICATION_PLUGIN   2 /* authentication   */
+#define MYSQL_CLIENT_AUTHENTICATION_PLUGIN   2	/* authentication   */
 
 #define MYSQL_CLIENT_AUTHENTICATION_PLUGIN_INTERFACE_VERSION  0x0100
 #define MYSQL_CLIENT_MAX_PLUGINS             3
 
 /* Connector/C specific plugin types */
-#define MARIADB_CLIENT_REMOTEIO_PLUGIN       100 /* communication IO */
+#define MARIADB_CLIENT_REMOTEIO_PLUGIN       100	/* communication IO */
 #define MARIADB_CLIENT_PVIO_PLUGIN           101
 #define MARIADB_CLIENT_TRACE_PLUGIN          102
 #define MARIADB_CLIENT_CONNECTION_PLUGIN     103
@@ -82,8 +82,7 @@
   int (*options)(const char *option, const void *);
 struct st_mysql_client_plugin
 {
-  MYSQL_CLIENT_PLUGIN_HEADER
-};
+MYSQL_CLIENT_PLUGIN_HEADER};
 #endif
 
 struct st_mysql;
@@ -93,18 +92,18 @@ struct st_mysql;
 typedef struct st_ma_connection_plugin
 {
   MYSQL_CLIENT_PLUGIN_HEADER
-  /* functions */
-  MYSQL *(*connect)(MYSQL *mysql, const char *host,
-                    const char *user, const char *passwd,
-		                const char *db, unsigned int port,
-                    const char *unix_socket, unsigned long clientflag);
-  void (*close)(MYSQL *mysql);
-  int (*set_optionsv)(MYSQL *mysql, unsigned int option, ...);
-  int (*set_connection)(MYSQL *mysql,enum enum_server_command command,
-                        const char *arg,
-                        size_t length, my_bool skipp_check, void *opt_arg);
-  my_bool (*reconnect)(MYSQL *mysql);
-  int (*reset)(MYSQL *mysql);
+    /* functions */
+  MYSQL * (*connect) (MYSQL * mysql, const char *host,
+		      const char *user, const char *passwd,
+		      const char *db, unsigned int port,
+		      const char *unix_socket, unsigned long clientflag);
+  void (*close) (MYSQL * mysql);
+  int (*set_optionsv) (MYSQL * mysql, unsigned int option, ...);
+  int (*set_connection) (MYSQL * mysql, enum enum_server_command command,
+			 const char *arg,
+			 size_t length, my_bool skipp_check, void *opt_arg);
+    my_bool (*reconnect) (MYSQL * mysql);
+  int (*reset) (MYSQL * mysql);
 } MARIADB_CONNECTION_PLUGIN;
 
 #define MARIADB_DB_DRIVER(a) ((a)->ext_db)
@@ -114,8 +113,7 @@ typedef struct st_ma_connection_plugin
 
 typedef struct st_mariadb_client_plugin_PVIO
 {
-  MYSQL_CLIENT_PLUGIN_HEADER
-  struct st_ma_pvio_methods *methods;
+  MYSQL_CLIENT_PLUGIN_HEADER struct st_ma_pvio_methods *methods;
 } MARIADB_PVIO_PLUGIN;
 
 /******** authentication plugin specific declarations *********/
@@ -124,14 +122,14 @@ typedef struct st_mariadb_client_plugin_PVIO
 struct st_mysql_client_plugin_AUTHENTICATION
 {
   MYSQL_CLIENT_PLUGIN_HEADER
-  int (*authenticate_user)(MYSQL_PLUGIN_VIO *vio, struct st_mysql *mysql);
+    int (*authenticate_user) (MYSQL_PLUGIN_VIO * vio,
+			      struct st_mysql * mysql);
 };
 
 /******** trace plugin *******/
 struct st_mysql_client_plugin_TRACE
 {
-  MYSQL_CLIENT_PLUGIN_HEADER
-};
+MYSQL_CLIENT_PLUGIN_HEADER};
 
 /**
   type of the mysql_authentication_dialog_ask function
@@ -149,8 +147,10 @@ struct st_mysql_client_plugin_TRACE
                         In all other cases it is assumed to be an allocated
                         string, and the "dialog" plugin will free() it.
 */
-typedef char *(*mysql_authentication_dialog_ask_t)(struct st_mysql *mysql,
-                      int type, const char *prompt, char *buf, int buf_len);
+typedef char *(*mysql_authentication_dialog_ask_t) (struct st_mysql * mysql,
+						    int type,
+						    const char *prompt,
+						    char *buf, int buf_len);
 
 /********************** remote IO plugin **********************/
 #ifdef HAVE_REMOTEIO
@@ -159,8 +159,7 @@ typedef char *(*mysql_authentication_dialog_ask_t)(struct st_mysql *mysql,
 /* Remote IO plugin */
 typedef struct st_mysql_client_plugin_REMOTEIO
 {
-  MYSQL_CLIENT_PLUGIN_HEADER
-  struct st_rio_methods *methods;
+  MYSQL_CLIENT_PLUGIN_HEADER struct st_rio_methods *methods;
 } MARIADB_REMOTEIO_PLUGIN;
 #endif
 
@@ -180,9 +179,9 @@ typedef struct st_mysql_client_plugin_REMOTEIO
   @retval
   a pointer to the loaded plugin, or NULL in case of a failure
 */
-struct st_mysql_client_plugin *
-mysql_load_plugin(struct st_mysql *mysql, const char *name, int type,
-                  int argc, ...);
+struct st_mysql_client_plugin *mysql_load_plugin (struct st_mysql *mysql,
+						  const char *name, int type,
+						  int argc, ...);
 
 /**
   loads a plugin and initializes it, taking va_list as an argument
@@ -201,9 +200,9 @@ mysql_load_plugin(struct st_mysql *mysql, const char *name, int type,
   @retval
   a pointer to the loaded plugin, or NULL in case of a failure
 */
-struct st_mysql_client_plugin * STDCALL
-mysql_load_plugin_v(struct st_mysql *mysql, const char *name, int type,
-                    int argc, va_list args);
+struct st_mysql_client_plugin *STDCALL
+mysql_load_plugin_v (struct st_mysql *mysql, const char *name, int type,
+		     int argc, va_list args);
 
 /**
   finds an already loaded plugin by name, or loads it, if necessary
@@ -216,8 +215,8 @@ mysql_load_plugin_v(struct st_mysql *mysql, const char *name, int type,
   @retval
   a pointer to the plugin, or NULL in case of a failure
 */
-struct st_mysql_client_plugin * STDCALL
-mysql_client_find_plugin(struct st_mysql *mysql, const char *name, int type);
+struct st_mysql_client_plugin *STDCALL
+mysql_client_find_plugin (struct st_mysql *mysql, const char *name, int type);
 
 /**
   adds a plugin structure to the list of loaded plugins
@@ -233,12 +232,10 @@ mysql_client_find_plugin(struct st_mysql *mysql, const char *name, int type);
   @retval
   a pointer to the plugin, or NULL in case of a failure
 */
-struct st_mysql_client_plugin * STDCALL
-mysql_client_register_plugin(struct st_mysql *mysql,
-                             struct st_mysql_client_plugin *plugin);
+struct st_mysql_client_plugin *STDCALL
+mysql_client_register_plugin (struct st_mysql *mysql,
+			      struct st_mysql_client_plugin *plugin);
 
 extern struct st_mysql_client_plugin *mysql_client_builtins[];
 
 #endif
-
-

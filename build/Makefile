@@ -242,6 +242,7 @@ Chat_System/Client/encryption.o: Chat_System/Client/encryption.cpp.o
 
 # target to build an object file
 Chat_System/Client/encryption.cpp.o:
+	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/Chat_System/Client/encryption.cpp.o
 	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Chat_System/Client/encryption.cpp.o
 .PHONY : Chat_System/Client/encryption.cpp.o
 
@@ -251,6 +252,7 @@ Chat_System/Client/encryption.i: Chat_System/Client/encryption.cpp.i
 
 # target to preprocess a source file
 Chat_System/Client/encryption.cpp.i:
+	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/Chat_System/Client/encryption.cpp.i
 	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Chat_System/Client/encryption.cpp.i
 .PHONY : Chat_System/Client/encryption.cpp.i
 
@@ -260,6 +262,7 @@ Chat_System/Client/encryption.s: Chat_System/Client/encryption.cpp.s
 
 # target to generate assembly for a file
 Chat_System/Client/encryption.cpp.s:
+	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/Chat_System/Client/encryption.cpp.s
 	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Chat_System/Client/encryption.cpp.s
 .PHONY : Chat_System/Client/encryption.cpp.s
 
@@ -371,6 +374,33 @@ Chat_System/Server/main.cpp.s:
 	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/Chat_System/Server/main.cpp.s
 .PHONY : Chat_System/Server/main.cpp.s
 
+Chat_System/Server/server.o: Chat_System/Server/server.cpp.o
+
+.PHONY : Chat_System/Server/server.o
+
+# target to build an object file
+Chat_System/Server/server.cpp.o:
+	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/Chat_System/Server/server.cpp.o
+.PHONY : Chat_System/Server/server.cpp.o
+
+Chat_System/Server/server.i: Chat_System/Server/server.cpp.i
+
+.PHONY : Chat_System/Server/server.i
+
+# target to preprocess a source file
+Chat_System/Server/server.cpp.i:
+	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/Chat_System/Server/server.cpp.i
+.PHONY : Chat_System/Server/server.cpp.i
+
+Chat_System/Server/server.s: Chat_System/Server/server.cpp.s
+
+.PHONY : Chat_System/Server/server.s
+
+# target to generate assembly for a file
+Chat_System/Server/server.cpp.s:
+	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/Chat_System/Server/server.cpp.s
+.PHONY : Chat_System/Server/server.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -406,6 +436,9 @@ help:
 	@echo "... Chat_System/Server/main.o"
 	@echo "... Chat_System/Server/main.i"
 	@echo "... Chat_System/Server/main.s"
+	@echo "... Chat_System/Server/server.o"
+	@echo "... Chat_System/Server/server.i"
+	@echo "... Chat_System/Server/server.s"
 .PHONY : help
 
 

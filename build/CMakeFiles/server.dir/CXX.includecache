@@ -6,19 +6,51 @@
 
 #IncludeRegexTransform: 
 
+/home/pawn/projects/ChatSystem/Chat_System/Client/encryption.cpp
+encryption.hpp
+/home/pawn/projects/ChatSystem/Chat_System/Client/encryption.hpp
+
+/home/pawn/projects/ChatSystem/Chat_System/Client/encryption.hpp
+iostream
+-
+fstream
+-
+string
+-
+cryptopp/osrng.h
+-
+cryptopp/rsa.h
+-
+cryptopp/files.h
+-
+cryptopp/cryptlib.h
+-
+boost/filesystem.hpp
+-
+
 /home/pawn/projects/ChatSystem/Chat_System/Server/main.cpp
-mysql/mysql.h
+string
 -
 iostream
 -
+server.hpp
+/home/pawn/projects/ChatSystem/Chat_System/Server/server.hpp
 
-/home/pawn/projects/ChatSystem/Chat_System/Server/user.cpp
-user.h
-/home/pawn/projects/ChatSystem/Chat_System/Server/user.h
+/home/pawn/projects/ChatSystem/Chat_System/Server/server.cpp
+server.hpp
+/home/pawn/projects/ChatSystem/Chat_System/Server/server.hpp
 
-/home/pawn/projects/ChatSystem/Chat_System/Server/user.h
+/home/pawn/projects/ChatSystem/Chat_System/Server/server.hpp
+vector
+-
 string
 -
-chrono
+iostream
+-
+fstream
+-
+thread
+-
+memory
 -
 
