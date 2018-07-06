@@ -18,6 +18,7 @@
 
 #include "connection.hpp"
 
+
 //for proper sending of a user we need to unpack the data
 
 
@@ -25,118 +26,127 @@
  * when we send our public key,
  * we will get a public key back
 */
-bool Connection::sendPublicKey()
-{
+bool Connection::sendPublicKey() {
     try {
-	sf::Packet publicKey;
-	std::string getLineStorage;
-	std::string keyData;
-	boost::filesystem::create_directories("../keyFolder/" + host);
+        sf::Packet publicKey;
+        std::string getLineStorage;
+        std::string keyData;
+        boost::filesystem::create_directories ( "../keyFolder/" + host );
 
-	//load in the public key as a string
-	std::ifstream localPublicKey("../keyFolder/publicKey",
-				     std::ifstream::in);
-	while (getline(localPublicKey, getLineStorage)) {
-	    keyData.append(getLineStorage);
-	}
-    }
-    catch(std::exception & e) {
-	std::cout << e.what() << std::endl;
-	return false;
+        //load in the public key as a string
+        std::ifstream localPublicKey ( "../keyFolder/publicKey",
+                                       std::ifstream::in );
+        while ( getline ( localPublicKey, getLineStorage ) ) {
+            keyData.append ( getLineStorage );
+        }
+
+        //send the key to the server as a command and data
+        send ( "clientKey", keyData );
+    } catch ( std::exception & e ) {
+        std::cout << e.what() << std::endl;
+        return false;
     }
     return true;
 }
 
-void Connection::setHost()
-{
+void Connection::setHost() {
     std::string getlineStorage;
 
     //if the file for configuration exists, read it
-    if (boost::filesystem::exists("../config.txt")) {
-	std::ifstream hostsFile("../config.txt", std::ifstream::in);
+    if ( boost::filesystem::exists ( "../config.txt" ) ) {
+        std::ifstream hostsFile ( "../config.txt", std::ifstream::in );
 
-	//grab the first line and find the host string
-	getline(hostsFile, getlineStorage);
-	std::size_t location;
-	location = getlineStorage.find(":");
-	host = getlineStorage.substr(location + 1);
-	std::cout << "Host: " << host << std::endl;
+        //grab the first line and find the host string
+        getline ( hostsFile, getlineStorage );
+        std::size_t location;
+        location = getlineStorage.find ( ":" );
+        host = getlineStorage.substr ( location + 1 );
+        std::cout << "Host: " << host << std::endl;
 
     } else {			//otherwise we need them to enter the data
-	std::cout << "Please enter the Host: ";
-	std::cin >> this->host;
+        std::cout << "Please enter the Host: ";
+        std::cin >> this->host;
 
-	//make an outstream to the config file which doesnt exist yet
-	std::ofstream configFile("../config.txt");
+        //make an outstream to the config file which doesnt exist yet
+        std::ofstream configFile ( "../config.txt" );
 
-	//write the data
-	configFile << "host:" + host << std::endl;
-	std::cout << "Saved Host!" << std::endl;
+        //write the data
+        configFile << "host:" + host << std::endl;
+        std::cout << "Saved Host!" << std::endl;
     }
 }
 
-bool Connection::disconnect()
-{
-    if(token != "")
-        return send("exit", token);
-    else{
+bool Connection::disconnect() {
+    if ( token != "" )
+        return send ( "exit", token );
+    else {
         std::cerr << "No token available" << std::endl;
         return false;
     }
 }
 
-bool Connection::connect()
-{
+bool Connection::connect() {
     //test to see if the server is up
-    return send("statusUp", "");
+    return send ( "statusUp", "" );
 }
 
-bool Connection::send(const std::string& command, const std::string& data)
-{
-    sf::Http http(host);
+bool Connection::send ( const std::string & command,
+                        const std::string & data ) {
+    sf::Http http ( host );
 
     //create a request to the server
     sf::Http::Request request;
-    request.setMethod(sf::Http::Request::Post);
-    request.setUri("/main.html");
-    request.setHttpVersion(1, 1);	// HTTP 1.1
-    request.setField("Content-Type", "application/x-www-form-urlencoded");
+    request.setMethod ( sf::Http::Request::Post );
+    request.setUri ( "/main.html" );
+    request.setHttpVersion ( 1, 1 );	// HTTP 1.1
+    request.setField ( "Content-Type", "application/x-www-form-urlencoded" );
 
     std::string packet;
-    std::ostringstream ostringstreamData (packet);
+    std::ostringstream ostringstreamData ( packet );
     ostringstreamData << "command=" << command << data;
-    request.setBody(ostringstreamData.str());
+    request.setBody ( ostringstreamData.str() );
 
     ///send that request to the server
-    sf::Http::Response response = http.sendRequest(request);
+    sf::Http::Response response = http.sendRequest ( request );
 
-    if (response.getStatus() == sf::Http::Response::Ok) {
-	//we were able to connect
-	connectionResult = response.getBody();
-    serverResponse(connectionResult);
-	return true;
+    if ( response.getStatus() == sf::Http::Response::Ok ) {
+        //we were able to connect
+        connectionResult = response.getBody();
+        serverResponse ( connectionResult );
+        return true;
     } else {
         //connection failed
         std::cerr <<
-	    "Connection Failed! Server not responding try again later!" <<
-	    std::endl;
+                  "Connection Failed! Server not responding try again later!" <<
+                  std::endl;
         return false;
-	
+
     }
 }
 
 //unpack the user data into a format that we can send over
-bool Connection::send(const std::string& command, User& user)
-{   std::string data;
-    std::ostringstream outstream(data);
-    user.loginData = encryption.encrypt(user.loginData);
+bool Connection::send ( const std::string & command, User & user ) {
+    std::string data;
+    std::ostringstream outstream ( data );
+    user.setLoginData ( encryption.encrypt ( user.getLoginData() ) );
     std::cout << "Sent User!" << std::endl;
-    outstream << "email=" << user.email << "&username=" << user.username << "&login=" <<user.loginData;
-    return send(command, outstream.str());
+    outstream << "email=" << user.getEmail() << "&username=" << user.
+              getUsername() << "&login=" << user.
+              getLoginData() << "&token=" << token;
+    return send ( command, outstream.str() );
 }
 
 
-void Connection::serverResponse(const std::string& reply)
-{
-    
+bool Connection::send ( const std::string & command, Message & message ) {
+    std::string data;
+    std::ostringstream outstream ( data );
+    outstream << "channelID=" << message.
+              getChannelID() << "&message=" << message.getMessage();
+    return send ( command, outstream.str() );
+}
+
+void Connection::serverResponse ( const std::string & reply ) {
+    if(reply =="{ok, connected}"){
+        sendPublicKey();
+    }
 }

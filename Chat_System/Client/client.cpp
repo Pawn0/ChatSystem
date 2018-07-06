@@ -18,49 +18,46 @@
 
 #include "client.hpp"
 //client is called when we create client object
-Client::Client()
-{
+Client::Client() {
     std::cout << "Chat System Started" << std::endl;
     con.setHost();
 }
 
-void Client::client()
-{
+int Client::client() {
     //this shows the client menu
     //which will be replaced with an actual gui
-    while (clientMenu() != 4) {
+    while ( clientMenu() != 4 ) {
+        std::cout << "Loop still going!"<< std::endl;
     }
-    exit(0);
+    return 0;
 }
 
 
-void Client::registerUser()
-{
+void Client::registerUser() {
     std::string username;
-    std::string password;
     //prompt for the user information
     //then call a function to send it to the server
     std::cout << "Please enter your username: ";
-    std::cin >> user.username;
+    std::cin >> username;
+    user.setUsername ( username );
 
     std::cout << "Please enter your email: ";
     std::string email;
-    std::cin >> user.email;
+    std::cin >> email;
+    user.setEmail ( email );
 
+    std::string password;
     std::cout << "Please enter your password: ";
     std::cin >> password;
-    
+
     std::string loginData = username + ":" + password;
-    
+
     //create the user object
-    user.username = username;
-    user.email = email;
-    user.loginData = loginData;
-    con.send("register", user);
+    user.setLoginData ( loginData );
+    con.send ( "register", user );
 }
 
-bool Client::logIn()
-{
+bool Client::logIn() {
     std::string username;
     std::string password;
     std::cout << "Please enter your username: ";
@@ -70,45 +67,54 @@ bool Client::logIn()
     std::cin >> password;
 
     std::string loginData = username + ":" + password;
-    
-    user.username = username;
-    user.loginData = loginData;
+
+    user.setUsername ( username );
+    user.setLoginData ( loginData );
     //encrypt the data and rebind it
-    return con.send("login", user);
+    return con.send ( "login", user );
 }
 
-bool Client::logOut()
-{
+bool Client::logOut() {
     //send a command to the server that we are logging logOut
     //and finally disconnect
     return con.disconnect();
 }
 
-bool Client::switchChannel()
-{
-    getMessages
+bool Client::switchChannel() {
+    //display the current channels
+    getChannels();
+
+    //then show the channels to the user so they canmake a choice
+    std::cout << "Please select channel by ID." << std::endl;
+    std::cout << "Availble channels: " << std::endl;
+    std::cout << "ID:     Name:" << std::endl;
+    for ( auto i = channels.cbegin(); i != channels.cend(); ++i ) {
+        std::cout << i->first << i->second << std::endl;
+    }
+
+    std::cout << "Selection: ";
+    std::cin >> channelID;
+
+    //send data to the serverto get the messages for that channel
+    return getMessages();
 }
 
-const std::string & Client::getChannel()
-{
+bool Client::getMessages() {
+    return con.send ( "getMsg", std::to_string ( channelID ) );
 }
 
-bool Client::getMessages()
-{
+bool Client::sendMessage ( Message & message ) {
+    if(message.getMessage() == "")
+        return false;
+    else
+        return con.send ( "msg", message );
 }
 
-bool Client::sendMessage(const std::string & message)
-{
-
+bool Client::getChannels() {
+    return con.send ( "getChan", "all" );
 }
 
-bool Client::getChannels()
-{
-
-}
-
-int Client::clientMenu()
-{
+int Client::clientMenu() {
     std::cout << "Please select an option." << std::endl;
     std::cout << "1. Login" << std::endl;
     std::cout << "2. Register " << std::endl;
@@ -118,22 +124,27 @@ int Client::clientMenu()
     int opt;
     std::cin >> opt;
 
-    switch (opt) {
+    switch ( opt ) {
     case 1:			//login
-	logIn();
-	break;
+        logIn();
+        break;
     case 2:			//register a new user
-	registerUser();
-	break;
+        registerUser();
+        break;
     case 3:			//set the host of the server
-	con.setHost();
-	break;
+        con.setHost();
+        break;
     case 4:
-	opt = 4;
-	con.disconnect();
-	break;
+        opt = 4;
+        con.disconnect();
+        break;
     default:
-	break;
+        break;
     }
     return opt;
+}
+
+void Client::displayMessages() {
+    std::system ( "clear" );
+
 }

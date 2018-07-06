@@ -16,13 +16,38 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "user.hpp"
+#ifndef USER_HPP
+#define USER_HPP
 
-User::User()
-{
-}
+#include <string>
+#include <chrono>
+/**
+ * @todo write docs
+ */
 
-User::User::User(const std::string& uname, const std::string& email,const std::string& loginData)
-{
-}
+//user is just to represent a user
+class User {
+public:
+    User();
+    User ( const std::string & uname, const std::string & email );
 
+    const std::string & getUsername();
+    void setUsername ( const std::string & username );
+
+    const int &getUserID();
+    void setUserID ( const int &id );
+
+    const std::string & getEmail();
+    void setEmail ( const std::string & email );
+
+    const std::string & getLoginData();
+    void setLoginData ( const std::string & loginData );
+
+private:
+    std::string username;
+    std::string email;
+    std::string loginData;	//loginData contains encrypted username & pass
+    int userID;
+};
+
+#endif				// USER_H

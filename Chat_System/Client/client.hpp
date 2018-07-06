@@ -4,18 +4,20 @@
 #include <vector>
 #include <string>
 #include <iostream>
-#include <SFML/System.hpp>
+#include <utility>
+#include <chrono>
 #include "connection.hpp"
-#include "encryption.hpp"
-#include "user.hpp"
+#include "../Utils/encryption.hpp"
+#include "../Utils/user.hpp"
+#include "../Utils/message.hpp"
 
 class Client {
-  public:
+public:
     //create a new client
     Client();
 
     //client operational loop
-    void client();
+    int client();
     //register a new user
     void registerUser();
 
@@ -28,33 +30,30 @@ class Client {
     //switch a channel, this may throw false if the channel switch was not sucessful
     bool switchChannel();
 
-    //get the channel, this is returned as a string constant
-    //meaning if they 
-    const std::string & getChannel();
-
     //get the messages from the channel we are in
-    bool getMessages(const int& channelID);
+    bool getMessages();
 
 
-    bool sendMessage(const std::string & message);
+    bool sendMessage ( Message & message );
 
     //get a list of channels
     bool getChannels();
 
     //menu for the client
     int clientMenu();
-  private:
+
+    void displayMessages();
+private:
     //the vector that lists the channels
-     std::vector < std::string > channels;
+    std::vector < std::pair < int, std::string > >channels;
 
     //vector that holds the messages
-     std::vector < std::string > messages;
+    std::vector < Message > messages;
 
     //variables to hold the username
     //and the current channel
-    int userID;
     int channelID;
-     std::string currentChannel;
+    std::string currentChannel;
     Connection con;
     User user;
 };
