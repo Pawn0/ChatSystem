@@ -106,7 +106,7 @@ void Encryption::loadFromFolder ( const std::string & fileName,
                                   CryptoPP::RSA::PublicKey & publicKey ) {
     try {			//load the data from the folder
         CryptoPP::ByteQueue queue;
-        load ( fileName, queue );
+        loadKey ( fileName, queue );
 
         //then load it into the system
         publicKey.Load ( queue );
@@ -124,7 +124,7 @@ void Encryption::loadFromFolder ( const std::string & fileName,
                                   CryptoPP::RSA::PrivateKey & privateKey ) {
     try {			//load the data from the folder
         CryptoPP::ByteQueue queue;
-        load ( fileName, queue );
+        loadKey( fileName, queue );
 
         //then load it into the system
         privateKey.Load ( queue );
@@ -137,7 +137,7 @@ void Encryption::loadFromFolder ( const std::string & fileName,
     }
 }
 
-void Encryption::load ( const std::string & fileName,
+void Encryption::loadKey ( const std::string & fileName,
                         CryptoPP::BufferedTransformation & buffTrans ) {
     //get the file source, and tell it to pump in all the contents
     CryptoPP::FileSource file ( fileName.c_str(), true );

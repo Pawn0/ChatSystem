@@ -62,7 +62,7 @@ private:
                           CryptoPP::RSA::PrivateKey & privateKey );
 
     //function to handle loading the data into a secure location
-    void load ( const std::string & fileName,
+    void loadKey( const std::string & fileName,
                 CryptoPP::BufferedTransformation & buffTrans );
 
     //verify the keys

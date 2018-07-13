@@ -23,6 +23,7 @@
 #include <pistache/router.h>
 #include <pistache/endpoint.h>
 #include <pistache/net.h>
+#include <boost/regex.hpp>
 #include "../Utils/encryption.hpp"
 #include <vector>
 #include <string>
@@ -45,24 +46,27 @@ public:
     void stop(); //stops the system gracefully
     
 private:
-    void setRoutes(); //routes
+    void displayConsole(); //console is called automatically   
+    
+    void setRestRoutes(); //routes
 
     //route for checking if the server is up
     void status(const Pistache::Rest::Request &request,
             Pistache::Http::ResponseWriter response);
-
     
-    void console(); //console is called automatically
+    void server(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response);
     
+    
+    void getBodyValues(const std::string& body, nameValue& container);
+    
+    void clientCommand(const std::string& command, const std::string& data);
     
     std::shared_ptr<Pistache::Http::Endpoint> endpoint;
     Pistache::Rest::Router router;
     Encryption encryption;
-    
-    
 };
 
-void getValues(const std::string& body, nameValue& container);
+
 
 
 #endif				// SERVER_H

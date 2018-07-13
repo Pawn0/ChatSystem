@@ -33,7 +33,7 @@ int Client::client() {
 }
 
 
-void Client::registerUser() {
+bool Client::registerUser() {
     std::string username;
     //prompt for the user information
     //then call a function to send it to the server

@@ -2,11 +2,12 @@
 #include <thread>
 #include <vector>
 #include "client.hpp"
+#include <regex>
 
 int main ( int argc, char **argv ) {
 
     Client client;
-
+/*
     //components holds our system items
     std::vector < std::thread > components;
 
@@ -17,6 +18,7 @@ int main ( int argc, char **argv ) {
     //lastly we will join all the threads, if exiting
     for ( std::thread & i:components ) {
         i.join();
-    }
+    }*/
+    client.client();
     return 0;
 }

@@ -28,7 +28,6 @@
 */
 bool Connection::sendPublicKey() {
     try {
-        sf::Packet publicKey;
         std::string getLineStorage;
         std::string keyData;
         boost::filesystem::create_directories ( "../keyFolder/" + host );
@@ -87,41 +86,42 @@ bool Connection::disconnect() {
 
 bool Connection::connect() {
     //test to see if the server is up
-    return send ( "statusUp", "" );
+    return send ( "statusUp", "~empty~" );
 }
 
 bool Connection::send ( const std::string & command,
                         const std::string & data ) {
-    sf::Http http ( host );
-
+   
+    Poco::Net::HTTPClientSession clientSession(host, 9081);
+    
     //create a request to the server
-    sf::Http::Request request;
-    request.setMethod ( sf::Http::Request::Post );
-    request.setUri ( "/main.html" );
-    request.setHttpVersion ( 1, 1 );	// HTTP 1.1
-    request.setField ( "Content-Type", "application/x-www-form-urlencoded" );
+    Poco::Net::HTTPRequest request(Poco::Net::HTTPRequest::HTTP_POST, "/server");
+    
+    std::ostream &body = clientSession.sendRequest(request);
 
     std::string packet;
     std::ostringstream ostringstreamData ( packet );
-    ostringstreamData << "command=" << command << data;
-    request.setBody ( ostringstreamData.str() );
+    ostringstreamData << "command=" << command << "&"<< data;
+    body << ostringstreamData.str();
+    
 
-    ///send that request to the server
-    sf::Http::Response response = http.sendRequest ( request );
-
-    if ( response.getStatus() == sf::Http::Response::Ok ) {
-        //we were able to connect
-        connectionResult = response.getBody();
-        serverResponse ( connectionResult );
-        return true;
-    } else {
-        //connection failed
-        std::cerr <<
-                  "Connection Failed! Server not responding try again later!" <<
-                  std::endl;
-        return false;
-
+    Poco::Net::HTTPResponse response;
+    std::istream& connectionResult = clientSession.receiveResponse(response);
+    
+    std::string responseBody;
+    std::string responseTotal;
+    while(connectionResult){
+        if(connectionResult.badbit)
+            clientSession.reset();
+        else{
+            connectionResult >> responseBody;
+        }
+        
+        responseTotal.append(responseBody);
     }
+    
+    std::cout << "Response Body: " << responseBody;
+    return true;
 }
 
 //unpack the user data into a format that we can send over
@@ -129,10 +129,8 @@ bool Connection::send ( const std::string & command, User & user ) {
     std::string data;
     std::ostringstream outstream ( data );
     user.setLoginData ( encryption.encrypt ( user.getLoginData() ) );
-    std::cout << "Sent User!" << std::endl;
     outstream << "email=" << user.getEmail() << "&username=" << user.
-              getUsername() << "&login=" << user.
-              getLoginData() << "&token=" << token;
+              getUsername();
     return send ( command, outstream.str() );
 }
 
@@ -146,7 +144,5 @@ bool Connection::send ( const std::string & command, Message & message ) {
 }
 
 void Connection::serverResponse ( const std::string & reply ) {
-    if(reply =="{ok, connected}"){
-        sendPublicKey();
-    }
+    std::cout << reply << std::endl;
 }

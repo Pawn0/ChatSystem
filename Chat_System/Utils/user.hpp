@@ -48,6 +48,7 @@ private:
     std::string email;
     std::string loginData;	//loginData contains encrypted username & pass
     int userID;
+    
 };
 
 #endif				// USER_H

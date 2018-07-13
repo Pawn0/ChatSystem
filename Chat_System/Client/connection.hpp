@@ -25,16 +25,16 @@
 #include <vector>
 #include <string>
 #include <fstream>
-#include <SFML/System.hpp>
-#include <SFML/System/Time.hpp>
-#include <SFML/Network.hpp>
-#include <SFML/Network/Packet.hpp>
-#include <SFML/Network/TcpSocket.hpp>
-#include <boost/lexical_cast.hpp>
 #include <iomanip>
+#include <boost/lexical_cast.hpp>
 #include "../Utils/encryption.hpp"
 #include "../Utils/user.hpp"
 #include "../Utils/message.hpp"
+#include <Poco/Net/HTTPClientSession.h>
+#include <Poco/Net/HTTPRequest.h>
+#include <Poco/Net/HTTPResponse.h>
+#include <Poco/Net/IPAddress.h>
+
 /**
  * @todo write docs
  */
@@ -66,7 +66,6 @@ private:
     Encryption encryption;
     std::string host;
     std::string token;
-    std::string connectionResult;
 };
 
 #endif				// CONNECTION_H

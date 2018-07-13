@@ -19,7 +19,7 @@ public:
     //client operational loop
     int client();
     //register a new user
-    void registerUser();
+    bool registerUser();
 
     //login
     bool logIn();
